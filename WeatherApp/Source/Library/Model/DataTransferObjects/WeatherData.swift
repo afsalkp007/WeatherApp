@@ -12,18 +12,18 @@ import Foundation
 struct WeatherData : Codable {
     
     struct WindInformation : Codable {
-        let speed : Double?
-        let deg : Int?
+        let windSpeed : Double?
+        let degree : Int?
         
         enum CodingKeys: String, CodingKey {
-            case speed = "speed"
-            case deg = "deg"
+            case windSpeed = "speed"
+            case degree = "deg"
         }
         
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            speed = try values.decodeIfPresent(Double.self, forKey: .speed)
-            deg = try values.decodeIfPresent(Int.self, forKey: .deg)
+            windSpeed = try values.decodeIfPresent(Double.self, forKey: .windSpeed)
+            degree = try values.decodeIfPresent(Int.self, forKey: .degree)
         }
         
     }
@@ -31,14 +31,14 @@ struct WeatherData : Codable {
     
     struct WeatherCondition : Codable {
         let identifier : Int?
-        let main : String?
+        let conditionName : String?
         let description : String?
         let icon : String?
         
         enum CodingKeys: String, CodingKey {
             
             case identifier = "id"
-            case main = "main"
+            case conditionName = "main"
             case description = "description"
             case icon = "icon"
         }
@@ -46,7 +46,7 @@ struct WeatherData : Codable {
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             identifier = try values.decodeIfPresent(Int.self, forKey: .identifier)
-            main = try values.decodeIfPresent(String.self, forKey: .main)
+            conditionName = try values.decodeIfPresent(String.self, forKey: .conditionName)
             description = try values.decodeIfPresent(String.self, forKey: .description)
             icon = try values.decodeIfPresent(String.self, forKey: .icon)
         }

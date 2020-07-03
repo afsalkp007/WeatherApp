@@ -15,7 +15,6 @@ enum Result<T> {
 
 final class WeatherService {
     
-    private let baseUrl = URL(string: "https://api.openweathermap.org")!
     private let apiKey = "c6e381d8c7ff98f0fee43775817cf6ad"
     
     private let networking: Networking
@@ -27,7 +26,7 @@ final class WeatherService {
     /// Fetch restaurant data
     /// - Parameter completion: Called when operation finishes
     func fetchBookmarkedLocations(_ location: String, completion: @escaping (Result<WeatherData?>) -> Void) {
-        let resource = Resource(url: baseUrl, path: "data/2.5/weather", parameters:
+        let resource = Resource(url: Constants.Urls.kOpenWeatherBaseUrl, path: "data/2.5/weather", parameters:
             ["q": location,
              "appid": apiKey
             ])

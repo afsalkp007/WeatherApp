@@ -12,3 +12,5 @@ km = "km";
 mi = "mi";
 metric = "Metric";
 imperial = "Imperial";
+coordinates = "Coordinates";
+distance = "Distance";

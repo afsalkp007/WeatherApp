@@ -606,9 +606,9 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2F3B5BE850A4DE1088B74AC1F2FE41A7 /* Debug */ = {
+		0663BE3958580254230251D28585F880 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6B8B253B82562CDDE74912336B6211D /* R.swift.Library.debug.xcconfig */;
+			baseConfigurationReference = 6BF8C4EEB01EC1B3A7B7ACF63F74DD58 /* R.swift.Library.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -634,12 +634,13 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		3CA988FC642E60A997A09C3BD4BD4634 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -709,9 +710,9 @@
 			};
 			name = Debug;
 		};
-		8999EA2E7622C882620488415A937C4B /* Release */ = {
+		7B4B4BCE35586FD1E22CD0ED80260E7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BF8C4EEB01EC1B3A7B7ACF63F74DD58 /* R.swift.Library.release.xcconfig */;
+			baseConfigurationReference = D6B8B253B82562CDDE74912336B6211D /* R.swift.Library.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -737,13 +738,12 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -986,8 +986,8 @@
 		3D966A6E3B737E009252B4616EF68E0D /* Build configuration list for PBXNativeTarget "R.swift.Library" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2F3B5BE850A4DE1088B74AC1F2FE41A7 /* Debug */,
-				8999EA2E7622C882620488415A937C4B /* Release */,
+				7B4B4BCE35586FD1E22CD0ED80260E7B /* Debug */,
+				0663BE3958580254230251D28585F880 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

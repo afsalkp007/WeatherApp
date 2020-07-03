@@ -14,11 +14,16 @@ class ListViewController: UIViewController {
     private let weatherService = WeatherService(networking: NetworkService())
     private let adapter = Adapter<WeatherData, ListCell>()
     private var refreshControl = UIRefreshControl()
-     private let emptyView = EmptyView(text: "No recipes found!")
+     private let emptyView = EmptyView(text: "No cities found!, Add some cities as Favourites")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTableView()
+        loadData()
+    }
+    
+    private func setupTableView() {
         tableView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
@@ -29,8 +34,6 @@ class ListViewController: UIViewController {
         tableView.backgroundColor = UIColor.clear
         tableView.separatorStyle = .none
         
-        loadData()
-        
         tableView.delegate = adapter
         tableView.dataSource = adapter
         
@@ -38,6 +41,11 @@ class ListViewController: UIViewController {
             self?.configure(with: weather, cell: cell)
         }
         
+        adapter.select = { [unowned self] weatherDTO in
+            guard let vc = R.storyboard.main.weatherDetailViewController() else { return }
+            vc.weatherDTO = weatherDTO
+            self.present(vc, animated: true)
+        }
     }
     
     private func configure(with weather: WeatherData, cell: ListCell) {
@@ -48,7 +56,7 @@ class ListViewController: UIViewController {
         
         cell.cloudCoverLabel.text = weather.cloudCoverage.coverage?.append(contentsOf: "%", delimiter: .none)
         cell.humidityLabel.text = weather.atmosphericInformation.humidity?.append(contentsOf: "%", delimiter: .none)
-        cell.windSpeedLabel.text = "\(weather.windInformation.speed ?? 0.0) km/h"
+        cell.windSpeedLabel.text = "\(weather.windInformation.windSpeed ?? 0.0) km/h"
     }
     
     private func loadData() {

@@ -62,46 +62,6 @@ final class ConversionWorker {
     }
   }
     
-    static  func convertToCelsius(_ kelvinTemp: Double) -> String {
-        let celsiusTemp = kelvinTemp - 273.15
-        return String(format: "%.0f", celsiusTemp)
-    }
-    
-      static func temperatureIntValue(forTemperatureUnit temperatureUnit: TemperatureUnitOption, fromRawTemperature rawTemperature: Double) -> Int? {
-      let adjustedTemp: Double
-      switch temperatureUnit.value {
-      case .celsius:
-        adjustedTemp = rawTemperature - 273.15
-      case . fahrenheit:
-        adjustedTemp = rawTemperature * (9/5) - 459.67
-      case .kelvin:
-        adjustedTemp = rawTemperature
-      }
-      
-      guard !adjustedTemp.isNaN && adjustedTemp.isFinite else { return nil }
-      return Int(adjustedTemp.rounded())
-    }
-    
-    static func temperatureDescriptor(forTemperatureUnit temperatureUnit: TemperatureUnitOption, fromRawTemperature rawTemperature: Double) -> String {
-      switch temperatureUnit.value {
-      case .celsius:
-        return String(format: "%.02f", rawTemperature - 273.15).append(contentsOf: "°C", delimiter: .none)
-      case . fahrenheit:
-        return String(format: "%.02f", rawTemperature * (9/5) - 459.67).append(contentsOf: "°F", delimiter: .none)
-      case .kelvin:
-        return String(format: "%.02f", rawTemperature).append(contentsOf: "°K", delimiter: .none)
-      }
-    }
-    
-    static func windspeedDescriptor(forDistanceSpeedUnit distanceSpeedUnit: DistanceVelocityUnitOption, forWindspeed windspeed: Double) -> String {
-      switch distanceSpeedUnit.value {
-      case .kilometres:
-        return String(format: "%.02f", windspeed).append(contentsOf: R.string.localizable.kph(), delimiter: .space)
-      case .miles:
-        return String(format: "%.02f", windspeed / 1.609344).append(contentsOf: R.string.localizable.mph(), delimiter: .space)
-      }
-    }
-    
     static func distanceDescriptor(forDistanceSpeedUnit distanceSpeedUnit: DistanceVelocityUnitOption, forDistanceInMetres distance: Double) -> String {
       switch distanceSpeedUnit.value {
       case .kilometres:
@@ -111,8 +71,9 @@ final class ConversionWorker {
       }
     }
     
-    static func windDirectionDescriptor(forWindDirection degrees: Double) -> String {
-      return String(format: "%.02f", degrees).append(contentsOf: "°", delimiter: .none)
+    static  func convertToCelsius(_ kelvinTemp: Double) -> String {
+        let celsiusTemp = kelvinTemp - 273.15
+        return String(format: "%.0f", celsiusTemp)
     }
     
     static func isDayTime(for dayTimeInformation: WeatherData.DayInformation?, coordinates: WeatherData.Coordinates) -> Bool? {
@@ -127,7 +88,7 @@ final class ConversionWorker {
       let location = CLLocation(latitude: latitude, longitude: longitude)
       
       var calendar = Calendar.current
-      calendar.timeZone = location.timeZone()
+      //calendar.timeZone = location.timeZone()
       
       let currentTimeDateComponents = calendar.dateComponents([.hour, .minute], from: Date())
       let sunriseDate = Date(timeIntervalSince1970: sunrise)
@@ -150,10 +111,6 @@ final class ConversionWorker {
         && ((currentTimeDateComponentHour == sunsetDateComponentHour
           && currentTimeDateComponentMinute <= sunsetDateComponentMinute)
           || currentTimeDateComponentHour < sunsetDateComponentHour)
-    }
-    
-    static func countryName(for countryCode: String) -> String? {
-      Locale.current.localizedString(forRegionCode: countryCode)
     }
 }
 
