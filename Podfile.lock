@@ -1,0 +1,24 @@
+PODS:
+  - APTimeZones (1.1)
+  - R.swift (5.0.3):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.1)
+
+DEPENDENCIES:
+  - APTimeZones
+  - R.swift
+
+SPEC REPOS:
+  trunk:
+    - APTimeZones
+    - R.swift
+    - R.swift.Library
+
+SPEC CHECKSUMS:
+  APTimeZones: ddb9aca50fff41d6313eb29d86d37b1edf9d2942
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
+
+PODFILE CHECKSUM: e729f3ce32ed381655a23d8132c848232c4e1d41
+
+COCOAPODS: 1.9.3
