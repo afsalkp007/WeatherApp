@@ -84,8 +84,7 @@ class ListViewController: UIViewController {
     
     @IBAction func addBookmark(_ sender: UIBarButtonItem) {
         let viewController = AddFavouriteViewController(weatherDataService: weatherService)
-        let nav = UINavigationController(rootViewController: viewController)
-        self.present(nav, animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func handle(_ weather: WeatherInformationDTO?) {

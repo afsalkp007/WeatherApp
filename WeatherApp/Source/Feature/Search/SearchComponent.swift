@@ -18,7 +18,7 @@ final class SearchComponent: NSObject, UISearchResultsUpdating, UISearchBarDeleg
 
   /// Avoid making lots of requests when user types fast
   /// This throttles the search requests
-  let debouncer = Debouncer(delay: 2)
+    let debouncer = Debouncer(delay: 0.2)
 
   required init(weatherDataService: WeatherDataService) {
     self.weatherDataService = weatherDataService

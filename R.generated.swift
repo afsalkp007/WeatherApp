@@ -114,20 +114,6 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.file` struct is generated, and contains static references to 1 files.
-  struct file {
-    /// Resource file `locationsSQLite.sqlite`.
-    static let locationsSQLiteSqlite = Rswift.FileResource(bundle: R.hostingBundle, name: "locationsSQLite", pathExtension: "sqlite")
-
-    /// `bundle.url(forResource: "locationsSQLite", withExtension: "sqlite")`
-    static func locationsSQLiteSqlite(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.locationsSQLiteSqlite
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    fileprivate init() {}
-  }
-
   /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
     /// Image `AirPressure`.

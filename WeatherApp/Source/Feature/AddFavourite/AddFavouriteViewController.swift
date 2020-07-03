@@ -43,7 +43,6 @@ class AddFavouriteViewController: UIViewController {
   // MARK: - Setup
 
   private func setup() {
-    searchListViewController.delegate = self
     searchListViewController.adapterCollection.select = select
     add(childViewController: searchListViewController)
   }
@@ -52,12 +51,6 @@ class AddFavouriteViewController: UIViewController {
     searchComponent.add(to: self)
     searchComponent.searchListViewController.adapterCollection.select = select
   }
-}
-
-extension AddFavouriteViewController: SearchListDelegate {
-    func dismissAddFavouriteView() {
-        self.dismiss(animated: true)
-    }
 }
 
 

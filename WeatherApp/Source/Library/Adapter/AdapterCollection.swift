@@ -10,7 +10,7 @@ import UIKit
 
 /// A generic adapter to act as convenient DataSource and Delegate for UICollectionView
 final class AdapterCollection<T, Cell: UICollectionViewCell>: NSObject,
-UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
   var items: [T] = []
   var configure: ((T, Cell) -> Void)?
   var select: ((T) -> Void)?
@@ -33,7 +33,7 @@ UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   }
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let item = items[0]
+    let item = items[indexPath.row]
     select?(item)
   }
 
