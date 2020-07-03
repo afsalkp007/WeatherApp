@@ -37,4 +37,8 @@ class Adapter<T, Cell: UITableViewCell>: NSObject, UITableViewDelegate, UITableV
         select?(item)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
+    
 }

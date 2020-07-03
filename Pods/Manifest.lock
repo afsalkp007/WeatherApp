@@ -1,24 +1,30 @@
 PODS:
   - APTimeZones (1.1)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - R.swift (5.2.2):
     - R.swift.Library (~> 5.2.0)
   - R.swift.Library (5.2.0)
 
 DEPENDENCIES:
   - APTimeZones
+  - FMDB (~> 2.7.5)
   - R.swift
 
 SPEC REPOS:
   trunk:
     - APTimeZones
+    - FMDB
     - R.swift
     - R.swift.Library
 
 SPEC CHECKSUMS:
   APTimeZones: ddb9aca50fff41d6313eb29d86d37b1edf9d2942
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
   R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
 
-PODFILE CHECKSUM: e729f3ce32ed381655a23d8132c848232c4e1d41
+PODFILE CHECKSUM: a3715a006209839a1419afa3f8b953ab492b80a3
 
 COCOAPODS: 1.9.3

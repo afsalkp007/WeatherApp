@@ -6,4 +6,5 @@ target 'WeatherApp' do
   # Pods for WeatherApp
 pod 'APTimeZones'
 pod 'R.swift'
+pod 'FMDB', '~> 2.7.5'
 end

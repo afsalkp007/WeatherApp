@@ -11,24 +11,25 @@ import UIKit
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private let weatherService = WeatherService(networking: NetworkService())
-    private let adapter = Adapter<WeatherData, ListCell>()
+    private let weatherService = WeatherDataService(networking: NetworkService())
+    private let adapter = Adapter<WeatherInformationDTO, ListCell>()
     private var refreshControl = UIRefreshControl()
      private let emptyView = EmptyView(text: "No cities found!, Add some cities as Favourites")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Bookmarks"
         setupTableView()
         loadData()
     }
     
     private func setupTableView() {
+        
         tableView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        let nib = UINib(nibName: "ListCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "ListCell")
+        tableView.register(cellType: ListCell.self)
         
         tableView.layer.cornerRadius = 0
         tableView.backgroundColor = UIColor.clear
@@ -44,11 +45,13 @@ class ListViewController: UIViewController {
         adapter.select = { [unowned self] weatherDTO in
             guard let vc = R.storyboard.main.weatherDetailViewController() else { return }
             vc.weatherDTO = weatherDTO
-            self.present(vc, animated: true)
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
         }
     }
     
-    private func configure(with weather: WeatherData, cell: ListCell) {
+    private func configure(with weather: WeatherInformationDTO, cell: ListCell) {
         cell.cityNameLabel.text = weather.cityName
         
         cell.temperatureLabel.text = "\(ConversionWorker.convertToCelsius(weather.atmosphericInformation.temperatureKelvin ?? 0.0)) \(Constants.Values.TemperatureUnit.kCelsius)"
@@ -79,7 +82,13 @@ class ListViewController: UIViewController {
       loadData()
     }
     
-    private func handle(_ weather: WeatherData?) {
+    @IBAction func addBookmark(_ sender: UIBarButtonItem) {
+        let viewController = AddFavouriteViewController(weatherDataService: weatherService)
+        let nav = UINavigationController(rootViewController: viewController)
+        self.present(nav, animated: true)
+    }
+    
+    private func handle(_ weather: WeatherInformationDTO?) {
         guard let weather = weather else { return }
         adapter.items.append(weather)
       tableView.reloadData()

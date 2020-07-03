@@ -14,3 +14,5 @@ metric = "Metric";
 imperial = "Imperial";
 coordinates = "Coordinates";
 distance = "Distance";
+search_by_name = "Search by Name";
+tab_weatherMap = "Map";

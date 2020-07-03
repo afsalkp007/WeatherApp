@@ -33,7 +33,7 @@ final class WeatherLocationMapAnnotation: NSObject, MKAnnotation {
     self.isBookmark = isBookmark
   }
   
-  convenience init?(weatherDTO: WeatherData?, isBookmark: Bool) {
+  convenience init?(weatherDTO: WeatherInformationDTO?, isBookmark: Bool) {
     guard let weatherDTO = weatherDTO,
       let latitude = weatherDTO.coordinates.latitude,
       let longitude = weatherDTO.coordinates.longitude else {

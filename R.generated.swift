@@ -114,7 +114,21 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.image` struct is generated, and contains static references to 15 images.
+  /// This `R.file` struct is generated, and contains static references to 1 files.
+  struct file {
+    /// Resource file `locationsSQLite.sqlite`.
+    static let locationsSQLiteSqlite = Rswift.FileResource(bundle: R.hostingBundle, name: "locationsSQLite", pathExtension: "sqlite")
+
+    /// `bundle.url(forResource: "locationsSQLite", withExtension: "sqlite")`
+    static func locationsSQLiteSqlite(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.locationsSQLiteSqlite
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
     /// Image `AirPressure`.
     static let airPressure = Rswift.ImageResource(bundle: R.hostingBundle, name: "AirPressure")
@@ -138,14 +152,18 @@ struct R: Rswift.Validatable {
     static let sunset = Rswift.ImageResource(bundle: R.hostingBundle, name: "Sunset")
     /// Image `Temperature`.
     static let temperature = Rswift.ImageResource(bundle: R.hostingBundle, name: "Temperature")
+    /// Image `VerticalCloseButton`.
+    static let verticalCloseButton = Rswift.ImageResource(bundle: R.hostingBundle, name: "VerticalCloseButton")
     /// Image `WindDirection`.
     static let windDirection = Rswift.ImageResource(bundle: R.hostingBundle, name: "WindDirection")
-    /// Image `WindSpeed-1`.
-    static let windSpeed1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "WindSpeed-1")
     /// Image `WindSpeed`.
     static let windSpeed = Rswift.ImageResource(bundle: R.hostingBundle, name: "WindSpeed")
     /// Image `notFound`.
     static let notFound = Rswift.ImageResource(bundle: R.hostingBundle, name: "notFound")
+    /// Image `tabbar_list_ios11`.
+    static let tabbar_list_ios11 = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_list_ios11")
+    /// Image `tabbar_map_ios11`.
+    static let tabbar_map_ios11 = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_map_ios11")
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "AirPressure", bundle: ..., traitCollection: ...)`
@@ -225,6 +243,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "VerticalCloseButton", bundle: ..., traitCollection: ...)`
+    static func verticalCloseButton(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.verticalCloseButton, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "WindDirection", bundle: ..., traitCollection: ...)`
     static func windDirection(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.windDirection, compatibleWith: traitCollection)
@@ -239,26 +264,43 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "WindSpeed-1", bundle: ..., traitCollection: ...)`
-    static func windSpeed1(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.windSpeed1, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "notFound", bundle: ..., traitCollection: ...)`
     static func notFound(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.notFound, compatibleWith: traitCollection)
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "tabbar_list_ios11", bundle: ..., traitCollection: ...)`
+    static func tabbar_list_ios11(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tabbar_list_ios11, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "tabbar_map_ios11", bundle: ..., traitCollection: ...)`
+    static func tabbar_map_ios11(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.tabbar_map_ios11, compatibleWith: traitCollection)
+    }
+    #endif
+
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
   struct nib {
+    /// Nib `AddFavoriteCell`.
+    static let addFavoriteCell = _R.nib._AddFavoriteCell()
     /// Nib `ListCell`.
     static let listCell = _R.nib._ListCell()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "AddFavoriteCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.addFavoriteCell) instead")
+    static func addFavoriteCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.addFavoriteCell)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "ListCell", in: bundle)`
@@ -268,6 +310,10 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    static func addFavoriteCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AddFavoriteCell? {
+      return R.nib.addFavoriteCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AddFavoriteCell
+    }
+
     static func listCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ListCell? {
       return R.nib.listCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ListCell
     }
@@ -275,8 +321,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 1 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `AddFavoriteCell`.
+    static let addFavoriteCell: Rswift.ReuseIdentifier<AddFavoriteCell> = Rswift.ReuseIdentifier(identifier: "AddFavoriteCell")
     /// Reuse identifier `ListCell`.
     static let listCell: Rswift.ReuseIdentifier<ListCell> = Rswift.ReuseIdentifier(identifier: "ListCell")
 
@@ -285,7 +333,7 @@ struct R: Rswift.Validatable {
 
   /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
-    /// This `R.string.localizable` struct is generated, and contains static references to 8 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 10 localization keys.
     struct localizable {
       /// en translation: Coordinates
       ///
@@ -299,10 +347,18 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en
       static let imperial = Rswift.StringResource(key: "imperial", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Map
+      ///
+      /// Locales: en
+      static let tab_weatherMap = Rswift.StringResource(key: "tab_weatherMap", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: Metric
       ///
       /// Locales: en
       static let metric = Rswift.StringResource(key: "metric", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
+      /// en translation: Search by Name
+      ///
+      /// Locales: en
+      static let search_by_name = Rswift.StringResource(key: "search_by_name", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en"], comment: nil)
       /// en translation: km
       ///
       /// Locales: en
@@ -365,6 +421,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("imperial", bundle: bundle, comment: "")
       }
 
+      /// en translation: Map
+      ///
+      /// Locales: en
+      static func tab_weatherMap(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("tab_weatherMap", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "tab_weatherMap"
+        }
+
+        return NSLocalizedString("tab_weatherMap", bundle: bundle, comment: "")
+      }
+
       /// en translation: Metric
       ///
       /// Locales: en
@@ -378,6 +449,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("metric", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Search by Name
+      ///
+      /// Locales: en
+      static func search_by_name(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("search_by_name", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "search_by_name"
+        }
+
+        return NSLocalizedString("search_by_name", bundle: bundle, comment: "")
       }
 
       /// en translation: km
@@ -475,6 +561,20 @@ struct _R: Rswift.Validatable {
       try _ListCell.validate()
     }
 
+    struct _AddFavoriteCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
+      typealias ReusableType = AddFavoriteCell
+
+      let bundle = R.hostingBundle
+      let identifier = "AddFavoriteCell"
+      let name = "AddFavoriteCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AddFavoriteCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AddFavoriteCell
+      }
+
+      fileprivate init() {}
+    }
+
     struct _ListCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {
       typealias ReusableType = ListCell
 
@@ -531,7 +631,7 @@ struct _R: Rswift.Validatable {
 
     #if os(iOS) || os(tvOS)
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = ListViewController
+      typealias InitialController = UIKit.UINavigationController
 
       let bundle = R.hostingBundle
       let name = "Main"
@@ -552,6 +652,7 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "Sunset", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Sunset' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "WindDirection", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'WindDirection' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "WindSpeed", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'WindSpeed' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "tabbar_list_ios11", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'tabbar_list_ios11' is used in storyboard 'Main', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
         if _R.storyboard.main().weatherDetailViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'weatherDetailViewController' could not be loaded from storyboard 'Main' as 'WeatherDetailViewController'.") }

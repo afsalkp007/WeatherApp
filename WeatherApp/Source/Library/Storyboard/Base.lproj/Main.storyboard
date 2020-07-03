@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z66-cl-ixw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="97p-5w-rr6">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zmu-I6-F8a">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -30,13 +30,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VVC-id-zc7"/>
                     </view>
+                    <navigationItem key="navigationItem" id="9RN-6V-eJY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JCT-eY-h8G">
+                            <connections>
+                                <action selector="addBookmark:" destination="z66-cl-ixw" id="jwP-2m-HtN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="zmu-I6-F8a" id="ZKO-Fe-OAa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9t0-Sh-kNj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="-454"/>
+            <point key="canvasLocation" x="912.79999999999995" y="-454.72263868065971"/>
         </scene>
         <!--Weather Detail View Controller-->
         <scene sceneID="GDf-mu-C0t">
@@ -492,7 +499,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJ5-vD-Cub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="953" y="-455"/>
+            <point key="canvasLocation" x="1892" y="-455.62218890554726"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IaW-mQ-eng">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="97p-5w-rr6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_list_ios11" id="4cx-bq-ubK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SkS-pd-54y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="z66-cl-ixw" kind="relationship" relationship="rootViewController" id="obC-nq-Gdg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWl-YY-yYG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="151" y="-456"/>
         </scene>
     </scenes>
     <resources>
@@ -506,5 +532,6 @@
         <image name="Sunset" width="25" height="25"/>
         <image name="WindDirection" width="25" height="25"/>
         <image name="WindSpeed" width="25" height="25"/>
+        <image name="tabbar_list_ios11" width="25" height="25"/>
     </resources>
 </document>

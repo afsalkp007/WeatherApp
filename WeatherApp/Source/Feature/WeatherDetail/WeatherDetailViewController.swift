@@ -12,7 +12,7 @@ import MapKit
 
 class WeatherDetailViewController: UIViewController {
     
-    var weatherDTO: WeatherData!
+    var weatherDTO: WeatherInformationDTO!
     @IBOutlet weak var coordinatesNoteLabel: UILabel!
     @IBOutlet weak var distanceNoteLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -36,7 +36,14 @@ class WeatherDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            
+        title = weatherDTO.cityName
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: R.image.verticalCloseButton(),
+            style: .plain,
+            target: self,
+            action: #selector(Self.dismissButtonTapped))
+        
         mapView.mapType = preferredMapType
         mapView.delegate = self
     }
@@ -96,6 +103,10 @@ class WeatherDetailViewController: UIViewController {
           .append(contentsOfConvertible: weatherDTO.coordinates.longitude, delimiter: .comma)
         
      
+    }
+    
+    @objc private func dismissButtonTapped(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true)
     }
 
     @IBAction func openWeatherButtonPressed(_ sender: UIButton) {
