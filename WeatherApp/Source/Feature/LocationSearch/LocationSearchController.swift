@@ -11,7 +11,7 @@ import MapKit
 
 protocol ChangeLocationDelegate {
     
-    func newLocationEntered(lat: String, lon: String)
+    func newLocationEntered(name: String)
 }
 
 class LocationSearchController: UITableViewController, UISearchBarDelegate, MKLocalSearchCompleterDelegate {
@@ -73,10 +73,7 @@ class LocationSearchController: UITableViewController, UISearchBarDelegate, MKLo
                 
                 for location in response.mapItems {
                     
-                    let lat = String(location.placemark.coordinate.latitude)
-                    let lon = String(location.placemark.coordinate.longitude)
-                    
-                    self.delegate?.newLocationEntered(lat: lat, lon: lon)
+                    self.delegate?.newLocationEntered(name: location.name ?? "")
                     
                     self.dismiss(animated: true, completion: nil)
                 }

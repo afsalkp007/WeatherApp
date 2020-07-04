@@ -21,13 +21,11 @@ class ListViewController: UIViewController {
         
         self.navigationItem.title = "Bookmarks"
         setupTableView()
-        loadData()
     }
     
     private func setupTableView() {
         
         tableView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         tableView.register(cellType: ListCell.self)
         
@@ -62,9 +60,9 @@ class ListViewController: UIViewController {
         cell.windSpeedLabel.text = "\(weather.windInformation.windSpeed ?? 0.0) km/h"
     }
     
-    private func loadData() {
+    private func loadData(with cityName: String) {
         refreshControl.beginRefreshing()
-        weatherService.fetchBookmarkedLocations("dubai", completion: { [weak self] result in
+        weatherService.fetchBookmarkedLocations(cityName, completion: { [weak self] result in
             switch result {
             case .success(let weather):
                 self?.handle(weather)
@@ -87,12 +85,6 @@ class ListViewController: UIViewController {
         }
     }
     
-    // MARK: - Action
-
-    @objc private func refresh() {
-      loadData()
-    }
-    
     private func handle(_ weather: WeatherInformationDTO?) {
         guard let weather = weather else { return }
         adapter.items.append(weather)
@@ -105,7 +97,7 @@ class ListViewController: UIViewController {
 }
 
 extension ListViewController: ChangeLocationDelegate {
-    func newLocationEntered(lat: String, lon: String) {
-        print(lat)
+    func newLocationEntered(name: String) {
+        loadData(with: name)
     }
 }
