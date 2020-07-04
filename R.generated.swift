@@ -297,20 +297,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
   struct nib {
-    /// Nib `AddFavoriteCell`.
-    static let addFavoriteCell = _R.nib._AddFavoriteCell()
     /// Nib `ListCell`.
     static let listCell = _R.nib._ListCell()
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "AddFavoriteCell", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.addFavoriteCell) instead")
-    static func addFavoriteCell(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.addFavoriteCell)
-    }
-    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "ListCell", in: bundle)`
@@ -320,10 +310,6 @@ struct R: Rswift.Validatable {
     }
     #endif
 
-    static func addFavoriteCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AddFavoriteCell? {
-      return R.nib.addFavoriteCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AddFavoriteCell
-    }
-
     static func listCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> ListCell? {
       return R.nib.listCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? ListCell
     }
@@ -331,10 +317,8 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
   struct reuseIdentifier {
-    /// Reuse identifier `AddFavoriteCell`.
-    static let addFavoriteCell: Rswift.ReuseIdentifier<AddFavoriteCell> = Rswift.ReuseIdentifier(identifier: "AddFavoriteCell")
     /// Reuse identifier `ListCell`.
     static let listCell: Rswift.ReuseIdentifier<ListCell> = Rswift.ReuseIdentifier(identifier: "ListCell")
     /// Reuse identifier `LocationResultCell`.
@@ -571,20 +555,6 @@ struct _R: Rswift.Validatable {
   struct nib: Rswift.Validatable {
     static func validate() throws {
       try _ListCell.validate()
-    }
-
-    struct _AddFavoriteCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType {
-      typealias ReusableType = AddFavoriteCell
-
-      let bundle = R.hostingBundle
-      let identifier = "AddFavoriteCell"
-      let name = "AddFavoriteCell"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> AddFavoriteCell? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? AddFavoriteCell
-      }
-
-      fileprivate init() {}
     }
 
     struct _ListCell: Rswift.NibResourceType, Rswift.ReuseIdentifierType, Rswift.Validatable {

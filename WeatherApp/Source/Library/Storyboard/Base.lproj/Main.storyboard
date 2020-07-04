@@ -33,7 +33,6 @@
                     <navigationItem key="navigationItem" id="9RN-6V-eJY">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JCT-eY-h8G">
                             <connections>
-                                <action selector="addBookmark:" destination="z66-cl-ixw" id="jwP-2m-HtN"/>
                                 <segue destination="vAv-ux-At9" kind="presentation" identifier="showLocationSearch" id="hdd-Bk-hAi"/>
                             </connections>
                         </barButtonItem>

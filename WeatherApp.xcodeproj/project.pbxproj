@@ -34,15 +34,9 @@
 		C2A36C6E24AF6A07005DD8AA /* Constants+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C6D24AF6A07005DD8AA /* Constants+Messages.swift */; };
 		C2A36C7624AF77BF005DD8AA /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C7524AF77BF005DD8AA /* UIViewController+Ext.swift */; };
 		C2A36C7824AF7865005DD8AA /* Constants+Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C7724AF7865005DD8AA /* Constants+Urls.swift */; };
-		C2A36C7B24AF7AA8005DD8AA /* AddFavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C7A24AF7AA8005DD8AA /* AddFavouriteViewController.swift */; };
-		C2A36C7E24AF7AEE005DD8AA /* AddFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C7C24AF7AEE005DD8AA /* AddFavoriteCell.swift */; };
-		C2A36C7F24AF7AEE005DD8AA /* AddFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A36C7D24AF7AEE005DD8AA /* AddFavoriteCell.xib */; };
 		C2A36C8624AF904E005DD8AA /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C8524AF904E005DD8AA /* UserLocationService.swift */; };
-		C2A36C9124AFAA0D005DD8AA /* SearchComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C9024AFAA0D005DD8AA /* SearchComponent.swift */; };
 		C2A36C9424AFAA9D005DD8AA /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C9324AFAA9D005DD8AA /* Debouncer.swift */; };
-		C2A36C9624AFBFF0005DD8AA /* SearchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C9524AFBFF0005DD8AA /* SearchListController.swift */; };
 		C2A36C9824AFC02A005DD8AA /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C9724AFC02A005DD8AA /* NSLayoutConstraint+Extensions.swift */; };
-		C2A36C9A24AFC08C005DD8AA /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C9924AFC08C005DD8AA /* SearchCell.swift */; };
 		C2A36C9C24AFC23C005DD8AA /* AdapterCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C9B24AFC23C005DD8AA /* AdapterCollection.swift */; };
 		C2A36C9E24AFC25F005DD8AA /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C9D24AFC25F005DD8AA /* UICollectionView+Ext.swift */; };
 		C2B24A6124AEEF11000A367D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B24A6024AEEF11000A367D /* AppDelegate.swift */; };
@@ -87,15 +81,9 @@
 		C2A36C6D24AF6A07005DD8AA /* Constants+Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Messages.swift"; sourceTree = "<group>"; };
 		C2A36C7524AF77BF005DD8AA /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		C2A36C7724AF7865005DD8AA /* Constants+Urls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Urls.swift"; sourceTree = "<group>"; };
-		C2A36C7A24AF7AA8005DD8AA /* AddFavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavouriteViewController.swift; sourceTree = "<group>"; };
-		C2A36C7C24AF7AEE005DD8AA /* AddFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteCell.swift; sourceTree = "<group>"; };
-		C2A36C7D24AF7AEE005DD8AA /* AddFavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFavoriteCell.xib; sourceTree = "<group>"; };
 		C2A36C8524AF904E005DD8AA /* UserLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
-		C2A36C9024AFAA0D005DD8AA /* SearchComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchComponent.swift; sourceTree = "<group>"; };
 		C2A36C9324AFAA9D005DD8AA /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
-		C2A36C9524AFBFF0005DD8AA /* SearchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListController.swift; sourceTree = "<group>"; };
 		C2A36C9724AFC02A005DD8AA /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
-		C2A36C9924AFC08C005DD8AA /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		C2A36C9B24AFC23C005DD8AA /* AdapterCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdapterCollection.swift; sourceTree = "<group>"; };
 		C2A36C9D24AFC25F005DD8AA /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		C2B24A5D24AEEF11000A367D /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,26 +226,6 @@
 			path = WeatherDetail;
 			sourceTree = "<group>";
 		};
-		C2A36C7924AF7A8F005DD8AA /* AddFavourite */ = {
-			isa = PBXGroup;
-			children = (
-				C2A36C7A24AF7AA8005DD8AA /* AddFavouriteViewController.swift */,
-				C2A36C7C24AF7AEE005DD8AA /* AddFavoriteCell.swift */,
-				C2A36C7D24AF7AEE005DD8AA /* AddFavoriteCell.xib */,
-			);
-			path = AddFavourite;
-			sourceTree = "<group>";
-		};
-		C2A36C8F24AFA9FF005DD8AA /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				C2A36C9024AFAA0D005DD8AA /* SearchComponent.swift */,
-				C2A36C9524AFBFF0005DD8AA /* SearchListController.swift */,
-				C2A36C9924AFC08C005DD8AA /* SearchCell.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
 		C2A36C9224AFAA91005DD8AA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,8 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				C256FE7024B070F400F5C98B /* LocationSearch */,
-				C2A36C8F24AFA9FF005DD8AA /* Search */,
-				C2A36C7924AF7A8F005DD8AA /* AddFavourite */,
 				C2A36C5E24AF53B8005DD8AA /* WeatherDetail */,
 				C2B24A8124AEF134000A367D /* List */,
 			);
@@ -462,7 +428,6 @@
 				C2A36C4224AF2932005DD8AA /* Localizable.strings in Resources */,
 				C2B24A6D24AEEF12000A367D /* LaunchScreen.storyboard in Resources */,
 				C29F032024AEFB1600124257 /* ListCell.xib in Resources */,
-				C2A36C7F24AF7AEE005DD8AA /* AddFavoriteCell.xib in Resources */,
 				C2B24A6A24AEEF12000A367D /* Assets.xcassets in Resources */,
 				C2B24A6824AEEF11000A367D /* Main.storyboard in Resources */,
 			);
@@ -540,11 +505,9 @@
 				C29F033C24AF206800124257 /* String+AppendWithDelimiter.swift in Sources */,
 				C2A36C6C24AF69B6005DD8AA /* UIColor+SemanticInitializer.swift in Sources */,
 				C2A36C7624AF77BF005DD8AA /* UIViewController+Ext.swift in Sources */,
-				C2A36C9A24AFC08C005DD8AA /* SearchCell.swift in Sources */,
 				C2A36C6224AF6823005DD8AA /* WeatherLocationMapAnnotation.swift in Sources */,
 				C2A36C4824AF2A5A005DD8AA /* PreferencesOption.swift in Sources */,
 				C2A36C3F24AF2827005DD8AA /* DistanceVelocityUnitOption.swift in Sources */,
-				C2A36C9124AFAA0D005DD8AA /* SearchComponent.swift in Sources */,
 				C2A36C6A24AF6982005DD8AA /* Constants+Them.Color.swift in Sources */,
 				C2A36C6024AF53D1005DD8AA /* WeatherDetailViewController.swift in Sources */,
 				C29F031F24AEFB1600124257 /* ListCell.swift in Sources */,
@@ -555,16 +518,13 @@
 				C2B24A9824AEF2C4000A367D /* WeatherInformationDTO.swift in Sources */,
 				C2A36C4624AF2A2A005DD8AA /* R.generated.swift in Sources */,
 				C29F032624AEFFDD00124257 /* EmptyView.swift in Sources */,
-				C2A36C7B24AF7AA8005DD8AA /* AddFavouriteViewController.swift in Sources */,
 				C2B24A8524AEF15B000A367D /* Resource.swift in Sources */,
 				C2B24A7524AEEF8F000A367D /* ListViewController.swift in Sources */,
 				C2A36C8624AF904E005DD8AA /* UserLocationService.swift in Sources */,
 				C29F033224AF1D9700124257 /* Constants+Values.swift in Sources */,
 				C2B24A8924AEF17E000A367D /* NetworkService.swift in Sources */,
 				C29F032D24AF078100124257 /* ConversionWorker.swift in Sources */,
-				C2A36C9624AFBFF0005DD8AA /* SearchListController.swift in Sources */,
 				C29F032824AF001500124257 /* UIView+Ext.swift in Sources */,
-				C2A36C7E24AF7AEE005DD8AA /* AddFavoriteCell.swift in Sources */,
 				C2A36C9C24AFC23C005DD8AA /* AdapterCollection.swift in Sources */,
 				C29F032324AEFD4800124257 /* UITableView+Ext.swift in Sources */,
 				C2A36C6624AF68DA005DD8AA /* Constants+Keys.swift in Sources */,
