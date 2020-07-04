@@ -10,19 +10,18 @@ import UIKit
 import MapKit
 
 protocol ChangeLocationDelegate {
-    
     func newLocationEntered(name: String)
 }
 
 class LocationSearchController: UITableViewController {
     
-    // variables
+    // MARK: - variables
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     var delegate: ChangeLocationDelegate?
-    let debouncer = Debouncer(delay: 1)
+    let debouncer = Debouncer(delay: 0.1)
     
-    // outlets
+    // MARK: - outlets
     @IBOutlet weak var locationSearchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -34,6 +33,10 @@ class LocationSearchController: UITableViewController {
        
     }
     
+    
+}
+
+extension LocationSearchController {
     // MARK: UITableView methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -46,30 +49,23 @@ class LocationSearchController: UITableViewController {
             
             if error != nil {
                 
-                
             } else {
-                
                 guard let response = response else {
-                    
                     return
                 }
                 
                 for location in response.mapItems {
-                    
                     self.delegate?.newLocationEntered(name: location.name ?? "")
-                    
                     self.dismiss(animated: true, completion: nil)
                 }
             }
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationResultCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Keys.ReuseIdentifier.kLocationResultCell, for: indexPath)
         cell.textLabel?.text = "\(searchResults[indexPath.row].title), \(searchResults[indexPath.row].subtitle)"
-        
         return cell
     }
     

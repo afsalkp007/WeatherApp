@@ -14,7 +14,7 @@ extension String {
     /// Localized string
     public var localized: String {
         
-        var bundlePath = Bundle.main.path(forResource: "en" as String?, ofType: "lproj")
+        let bundlePath = Bundle.main.path(forResource: "en" as String?, ofType: "lproj")
         
         let Languagebundle = Bundle(path: bundlePath!)
         return NSLocalizedString(

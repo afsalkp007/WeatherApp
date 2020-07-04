@@ -16,7 +16,6 @@ enum Result<T> {
 final class WeatherDataService {
     
     private let apiKey = "c6e381d8c7ff98f0fee43775817cf6ad"
-    
     private let networking: Networking
     
     private(set) var bookmarkedWeatherDataObjects: [WeatherInformationDTO]?
@@ -37,24 +36,6 @@ final class WeatherDataService {
         ])
         
         _ = networking.fetch(resource: resource, completion: { data in
-            DispatchQueue.main.async {
-                completion(.success(data.flatMap({ WeatherInformationDTO.make(data: $0) }) ))
-            }
-        })
-    }
-    
-    /// Search city based on query
-    ///
-    /// - Parameters:
-    ///   - query: The search query
-    ///   - completion: Called when operation finishes
-    /// - Returns: The network task
-    @discardableResult func search(query: String, completion: @escaping (Result<WeatherInformationDTO?>) -> Void) -> URLSessionTask? {
-        let resource = Resource(url: Constants.Urls.kOpenWeatherBaseUrl, path: "data/2.5/weather", parameters: ["q": query,
-            "appid": apiKey
-        ])
-        
-        return networking.fetch(resource: resource, completion: { data in
             DispatchQueue.main.async {
                 completion(.success(data.flatMap({ WeatherInformationDTO.make(data: $0) }) ))
             }

@@ -57,7 +57,7 @@ class ListViewController: UIViewController {
         }
         
         adapter.select = { [unowned self] weatherDTO in
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "WeatherDetailViewController") as? WeatherDetailViewController else { return }
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Keys.ViewController.kWeatherDetailViewController) as? WeatherDetailViewController else { return }
             vc.weatherDTO = weatherDTO
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen

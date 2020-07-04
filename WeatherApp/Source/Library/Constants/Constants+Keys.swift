@@ -35,3 +35,17 @@ extension Constants.Keys {
   }
 }
 
+extension Constants.Keys {
+    
+    enum ViewController {
+        static let kWeatherDetailViewController = "WeatherDetailViewController"
+    }
+}
+
+extension Constants.Keys {
+    
+    enum ReuseIdentifier {
+        static let kLocationResultCell = "LocationResultCell"
+    }
+}
+
