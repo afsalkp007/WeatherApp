@@ -1,9 +1,9 @@
 //
-//  NSLayoutConstraint+Extensions.swift
-//  Recipes
+//  NSLayoutConstraint.swift
+//  WeatherApp
 //
-//  Created by Khoa Pham on 24.02.2018.
-//  Copyright © 2018 Khoa Pham. All rights reserved.
+//  Created by Afsal's Macbook Pro on 03/07/2020.
+//  Copyright © 2020 Afsal. All rights reserved.
 //
 
 import UIKit

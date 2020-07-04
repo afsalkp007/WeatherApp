@@ -1,9 +1,9 @@
 //
 //  LocationSearchController.swift
-//  Weather
+//  WeatherApp
 //
-//  Created by Andrew. on 24/09/2018.
-//  Copyright © 2018 A Code Guy. All rights reserved.
+//  Created by Afsal's Macbook Pro on 03/07/2020.
+//  Copyright © 2020 Afsal. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ protocol ChangeLocationDelegate {
     func newLocationEntered(name: String)
 }
 
-class LocationSearchController: UITableViewController, UISearchBarDelegate, MKLocalSearchCompleterDelegate {
+class LocationSearchController: UITableViewController {
     
     // variables
     var searchCompleter = MKLocalSearchCompleter()
@@ -25,30 +25,12 @@ class LocationSearchController: UITableViewController, UISearchBarDelegate, MKLo
     @IBOutlet weak var locationSearchBar: UISearchBar!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         searchCompleter.delegate = self
         searchCompleter.filterType = .locationsOnly
-        
         locationSearchBar.delegate = self
        
-    }
-    
-    // MARK: UISearchBar methods
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        searchCompleter.queryFragment = searchText
-        
-    }
-    
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        
-        locationSearchBar.endEditing(true)
-        locationSearchBar.resignFirstResponder()
-        
-        return true
     }
     
     // MARK: UITableView methods
@@ -85,26 +67,37 @@ class LocationSearchController: UITableViewController, UISearchBarDelegate, MKLo
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationResultCell", for: indexPath)
-        
         cell.textLabel?.text = "\(searchResults[indexPath.row].title), \(searchResults[indexPath.row].subtitle)"
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return searchResults.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
+    }
+}
+
+extension LocationSearchController: MKLocalSearchCompleterDelegate, UISearchBarDelegate {
+    
+    // MARK: UISearchBar methods
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchCompleter.queryFragment = searchText
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        locationSearchBar.endEditing(true)
+        locationSearchBar.resignFirstResponder()
+        return true
     }
     
     // MKLocalSearch
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        
         searchResults = completer.results
         searchResults = cleanSearchResults()
         tableView.reloadData()
@@ -112,9 +105,7 @@ class LocationSearchController: UITableViewController, UISearchBarDelegate, MKLo
     
     // MARK: misc methods
     func cleanSearchResults() -> [MKLocalSearchCompletion] {
-        
         let digitsCharacterSet = NSCharacterSet.decimalDigits
-        
         let filteredResults = searchCompleter.results.filter { result in
             if result.title.rangeOfCharacter(from: digitsCharacterSet) != nil {
                 return false
@@ -126,7 +117,6 @@ class LocationSearchController: UITableViewController, UISearchBarDelegate, MKLo
             
             return true
         }
-        
         return filteredResults
     }
 }

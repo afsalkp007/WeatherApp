@@ -8,7 +8,6 @@
 
 import Foundation
 import MapKit
-import APTimeZones
 
 final class ConversionWorker {
   
@@ -65,9 +64,9 @@ final class ConversionWorker {
     static func distanceDescriptor(forDistanceSpeedUnit distanceSpeedUnit: DistanceVelocityUnitOption, forDistanceInMetres distance: Double) -> String {
       switch distanceSpeedUnit.value {
       case .kilometres:
-        return String(format: "%.02f", distance/1000).append(contentsOf: R.string.localizable.km(), delimiter: .space)
+        return String(format: "%.02f", distance/1000).append(contentsOf: TitleManager.km.localized, delimiter: .space)
       case .miles:
-        return String(format: "%.02f", distance/1609.344).append(contentsOf: R.string.localizable.mi(), delimiter: .space)
+        return String(format: "%.02f", distance/1609.344).append(contentsOf: TitleManager.mi.localized, delimiter: .space)
       }
     }
     
@@ -85,10 +84,7 @@ final class ConversionWorker {
           return nil
       }
       
-      let location = CLLocation(latitude: latitude, longitude: longitude)
-      
-      var calendar = Calendar.current
-      //calendar.timeZone = location.timeZone()
+      let calendar = Calendar.current
       
       let currentTimeDateComponents = calendar.dateComponents([.hour, .minute], from: Date())
       let sunriseDate = Date(timeIntervalSince1970: sunrise)

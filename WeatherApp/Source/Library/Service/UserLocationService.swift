@@ -1,9 +1,9 @@
 //
-//  LocationService.swift
-//  NearbyWeather
+//  UserLocationService.swift
+//  WeatherApp
 //
-//  Created by Erik Maximilian Martens on 09.04.17.
-//  Copyright © 2017 Erik Maximilian Martens. All rights reserved.
+//  Created by Afsal's Macbook Pro on 03/07/2020.
+//  Copyright © 2020 Afsal. All rights reserved.
 //
 
 import CoreLocation

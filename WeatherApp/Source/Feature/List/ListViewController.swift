@@ -33,6 +33,10 @@ class ListViewController: UIViewController {
         view.addSubview(emptyView)
         NSLayoutConstraint.pin(view: emptyView, toEdgesOf: view)
         emptyView.alpha = 0
+        
+        if namesArray.isEmpty {
+            setupEmptyView()
+        }
     }
     
     private func setupTableView() {
@@ -53,7 +57,7 @@ class ListViewController: UIViewController {
         }
         
         adapter.select = { [unowned self] weatherDTO in
-            guard let vc = R.storyboard.main.weatherDetailViewController() else { return }
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "WeatherDetailViewController") as? WeatherDetailViewController else { return }
             vc.weatherDTO = weatherDTO
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
@@ -117,7 +121,7 @@ class ListViewController: UIViewController {
     }
     
     func setupEmptyView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             UIView.animate(withDuration: 0.25, animations: {
               self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
             })

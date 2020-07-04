@@ -39,9 +39,9 @@ struct DistanceVelocityUnitOption: Codable, PreferencesOption {
   var stringValue: String {
     switch value {
     case .kilometres:
-      return R.string.localizable.metric()
+        return TitleManager.metric.localized
     case .miles:
-      return R.string.localizable.imperial()
+        return TitleManager.imperial.localized
     }
   }
 }

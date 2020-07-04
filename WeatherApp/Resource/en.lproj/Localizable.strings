@@ -6,13 +6,13 @@
   Copyright © 2020 Afsal. All rights reserved.
 */
 
-kph = "km/h";
-mph = "mp/h";
-km = "km";
-mi = "mi";
-metric = "Metric";
-imperial = "Imperial";
-coordinates = "Coordinates";
-distance = "Distance";
-search_by_name = "Search by Name";
-tab_weatherMap = "Map";
+"kph" = "km/h";
+"mph" = "mp/h";
+"km" = "km";
+"mi" = "mi";
+"metric" = "Metric";
+"imperial" = "Imperial";
+"coordinates" = "Coordinates";
+"distance" = "Distance";
+"search_by_name" = "Search by Name";
+"tab_weatherMap" = "Map";

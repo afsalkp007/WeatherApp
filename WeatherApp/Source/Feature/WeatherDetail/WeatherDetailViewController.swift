@@ -39,7 +39,7 @@ class WeatherDetailViewController: UIViewController {
         title = weatherDTO.cityName
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: R.image.verticalCloseButton(),
+            image: UIImage(named: "VerticalCloseButton"),
             style: .plain,
             target: self,
             action: #selector(Self.dismissButtonTapped))
@@ -90,14 +90,14 @@ class WeatherDetailViewController: UIViewController {
         pressureLabel.text = weatherDTO?.atmosphericInformation.pressurePsi?.append(contentsOf: "hpa", delimiter: .space)
         
         if let windspeed = weatherDTO?.windInformation.windSpeed {
-            windSpeedLabel.text = "\(windspeed) \(R.string.localizable.kph())"
+            windSpeedLabel.text = "\(windspeed) \(TitleManager.kph.localized)"
         }
         
         if let windDirection = weatherDTO?.windInformation.degree {
             windSpeedLabel.text = "\(windDirection)"
         }
         
-        coordinatesNoteLabel.text = R.string.localizable.coordinates()
+        coordinatesNoteLabel.text = TitleManager.coordinates.localized
         coordinatesLabel.text = ""
           .append(contentsOfConvertible: weatherDTO.coordinates.latitude, delimiter: .none)
           .append(contentsOfConvertible: weatherDTO.coordinates.longitude, delimiter: .comma)
