@@ -29,6 +29,10 @@ class ListViewController: UIViewController {
         namesArray.forEach{ name in
             loadData(with: name)
         }
+        
+        view.addSubview(emptyView)
+        NSLayoutConstraint.pin(view: emptyView, toEdgesOf: view)
+        emptyView.alpha = 0
     }
     
     private func setupTableView() {
@@ -56,11 +60,12 @@ class ListViewController: UIViewController {
             self.present(nav, animated: true)
         }
         
-        adapter.edit = { weatherDTO, indexPath in
+        adapter.edit = { [unowned self] weatherDTO, indexPath in
             self.namesArray = self.namesArray.filter({$0 != weatherDTO.cityName})
             self.defaults.set(self.namesArray, forKey: Constants.Keys.UserDefaults.kSavedNameArray)
             self.adapter.items.remove(at: indexPath.row)
             self.tableView.reloadData()
+            self.setupEmptyView()
         }
     }
     
@@ -101,13 +106,22 @@ class ListViewController: UIViewController {
     }
     
     private func handle(_ weather: WeatherInformationDTO?) {
-        guard let weather = weather else { return }
+        guard let weather = weather else {
+            setupEmptyView()
+            return
+        }
         adapter.items.append(weather)
       tableView.reloadData()
 
-      UIView.animate(withDuration: 0.25, animations: {
-        self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
-      })
+      setupEmptyView()
+    }
+    
+    func setupEmptyView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+            UIView.animate(withDuration: 0.25, animations: {
+              self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
+            })
+        })
     }
 }
 

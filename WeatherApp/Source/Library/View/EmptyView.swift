@@ -34,7 +34,9 @@ final class EmptyView: UIView {
       imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1),
 
       label.centerXAnchor.constraint(equalTo: centerXAnchor),
-      label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10)
+      label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
+        label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+        label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
     ])
   }
 
@@ -42,15 +44,16 @@ final class EmptyView: UIView {
 
   private func makeImageView() -> UIImageView {
     let imageView = UIImageView()
-    imageView.contentMode = .scaleAspectFill
+    imageView.contentMode = .scaleAspectFit
     imageView.clipsToBounds = true
-    imageView.image = UIImage(named: "notFound")
+    imageView.image = UIImage(named: "SadCloud")
     return imageView
   }
 
   private func makeLabel() -> UILabel {
     let label = UILabel()
     label.textAlignment = .center
+    label.numberOfLines = 0
     label.font = UIFont.preferredFont(forTextStyle: .headline)
     return label
   }

@@ -156,6 +156,8 @@ struct R: Rswift.Validatable {
     static let location = Rswift.ImageResource(bundle: R.hostingBundle, name: "Location")
     /// Image `OpenWeatherMapLogo`.
     static let openWeatherMapLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "OpenWeatherMapLogo")
+    /// Image `SadCloud`.
+    static let sadCloud = Rswift.ImageResource(bundle: R.hostingBundle, name: "SadCloud")
     /// Image `Sunrise`.
     static let sunrise = Rswift.ImageResource(bundle: R.hostingBundle, name: "Sunrise")
     /// Image `Sunset`.
@@ -168,8 +170,6 @@ struct R: Rswift.Validatable {
     static let windDirection = Rswift.ImageResource(bundle: R.hostingBundle, name: "WindDirection")
     /// Image `WindSpeed`.
     static let windSpeed = Rswift.ImageResource(bundle: R.hostingBundle, name: "WindSpeed")
-    /// Image `notFound`.
-    static let notFound = Rswift.ImageResource(bundle: R.hostingBundle, name: "notFound")
     /// Image `tabbar_list_ios11`.
     static let tabbar_list_ios11 = Rswift.ImageResource(bundle: R.hostingBundle, name: "tabbar_list_ios11")
     /// Image `tabbar_map_ios11`.
@@ -232,6 +232,13 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "SadCloud", bundle: ..., traitCollection: ...)`
+    static func sadCloud(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.sadCloud, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "Sunrise", bundle: ..., traitCollection: ...)`
     static func sunrise(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.sunrise, compatibleWith: traitCollection)
@@ -270,13 +277,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "WindSpeed", bundle: ..., traitCollection: ...)`
     static func windSpeed(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.windSpeed, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "notFound", bundle: ..., traitCollection: ...)`
-    static func notFound(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.notFound, compatibleWith: traitCollection)
     }
     #endif
 
