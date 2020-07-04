@@ -20,10 +20,7 @@
 		C29F033024AF1D4300124257 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F032F24AF1D4300124257 /* Constants.swift */; };
 		C29F033224AF1D9700124257 /* Constants+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F033124AF1D9700124257 /* Constants+Values.swift */; };
 		C29F033C24AF206800124257 /* String+AppendWithDelimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F033B24AF206800124257 /* String+AppendWithDelimiter.swift */; };
-		C2A36C3D24AF2805005DD8AA /* TemperatureUnitOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C3C24AF2805005DD8AA /* TemperatureUnitOption.swift */; };
-		C2A36C3F24AF2827005DD8AA /* DistanceVelocityUnitOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C3E24AF2827005DD8AA /* DistanceVelocityUnitOption.swift */; };
 		C2A36C4224AF2932005DD8AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2A36C4424AF2932005DD8AA /* Localizable.strings */; };
-		C2A36C4824AF2A5A005DD8AA /* PreferencesOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C4724AF2A5A005DD8AA /* PreferencesOption.swift */; };
 		C2A36C6024AF53D1005DD8AA /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C5F24AF53D1005DD8AA /* WeatherDetailViewController.swift */; };
 		C2A36C6224AF6823005DD8AA /* WeatherLocationMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C6124AF6823005DD8AA /* WeatherLocationMapAnnotation.swift */; };
 		C2A36C6424AF6875005DD8AA /* WeatherLocationMapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A36C6324AF6875005DD8AA /* WeatherLocationMapAnnotationView.swift */; };
@@ -65,10 +62,7 @@
 		C29F032F24AF1D4300124257 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C29F033124AF1D9700124257 /* Constants+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Values.swift"; sourceTree = "<group>"; };
 		C29F033B24AF206800124257 /* String+AppendWithDelimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AppendWithDelimiter.swift"; sourceTree = "<group>"; };
-		C2A36C3C24AF2805005DD8AA /* TemperatureUnitOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureUnitOption.swift; sourceTree = "<group>"; };
-		C2A36C3E24AF2827005DD8AA /* DistanceVelocityUnitOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceVelocityUnitOption.swift; sourceTree = "<group>"; };
 		C2A36C4324AF2932005DD8AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C2A36C4724AF2A5A005DD8AA /* PreferencesOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesOption.swift; sourceTree = "<group>"; };
 		C2A36C5F24AF53D1005DD8AA /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		C2A36C6124AF6823005DD8AA /* WeatherLocationMapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocationMapAnnotation.swift; sourceTree = "<group>"; };
 		C2A36C6324AF6875005DD8AA /* WeatherLocationMapAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherLocationMapAnnotationView.swift; sourceTree = "<group>"; };
@@ -194,16 +188,6 @@
 				C2B24A9124AEF2C4000A367D /* WeatherInformationDTO.swift */,
 			);
 			path = DataTransferObjects;
-			sourceTree = "<group>";
-		};
-		C29F033D24AF20F300124257 /* PreferenceOptions */ = {
-			isa = PBXGroup;
-			children = (
-				C2A36C4724AF2A5A005DD8AA /* PreferencesOption.swift */,
-				C2A36C3E24AF2827005DD8AA /* DistanceVelocityUnitOption.swift */,
-				C2A36C3C24AF2805005DD8AA /* TemperatureUnitOption.swift */,
-			);
-			path = PreferenceOptions;
 			sourceTree = "<group>";
 		};
 		C2A36C5E24AF53B8005DD8AA /* WeatherDetail */ = {
@@ -345,7 +329,6 @@
 		C2B24A8C24AEF2B9000A367D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C29F033D24AF20F300124257 /* PreferenceOptions */,
 				C29F033324AF1E7000124257 /* DataTransferObjects */,
 			);
 			path = Model;
@@ -428,8 +411,6 @@
 				C2A36C6C24AF69B6005DD8AA /* UIColor+SemanticInitializer.swift in Sources */,
 				C2A36C7624AF77BF005DD8AA /* UIViewController+Ext.swift in Sources */,
 				C2A36C6224AF6823005DD8AA /* WeatherLocationMapAnnotation.swift in Sources */,
-				C2A36C4824AF2A5A005DD8AA /* PreferencesOption.swift in Sources */,
-				C2A36C3F24AF2827005DD8AA /* DistanceVelocityUnitOption.swift in Sources */,
 				C2A36C6A24AF6982005DD8AA /* Constants+Them.Color.swift in Sources */,
 				C2A36C6024AF53D1005DD8AA /* WeatherDetailViewController.swift in Sources */,
 				C29F031F24AEFB1600124257 /* ListCell.swift in Sources */,
@@ -460,7 +441,6 @@
 				C256FE7224B0710A00F5C98B /* LocationSearchController.swift in Sources */,
 				C2A36C6824AF6965005DD8AA /* Constants+Theme.swift in Sources */,
 				C2A36C9824AFC02A005DD8AA /* NSLayoutConstraint+Extensions.swift in Sources */,
-				C2A36C3D24AF2805005DD8AA /* TemperatureUnitOption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

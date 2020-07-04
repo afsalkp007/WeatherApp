@@ -61,15 +61,6 @@ final class ConversionWorker {
     }
   }
     
-    static func distanceDescriptor(forDistanceSpeedUnit distanceSpeedUnit: DistanceVelocityUnitOption, forDistanceInMetres distance: Double) -> String {
-      switch distanceSpeedUnit.value {
-      case .kilometres:
-        return String(format: "%.02f", distance/1000).append(contentsOf: TitleManager.km.localized, delimiter: .space)
-      case .miles:
-        return String(format: "%.02f", distance/1609.344).append(contentsOf: TitleManager.mi.localized, delimiter: .space)
-      }
-    }
-    
     static  func convertToCelsius(_ kelvinTemp: Double) -> String {
         let celsiusTemp = kelvinTemp - 273.15
         return String(format: "%.0f", celsiusTemp)
@@ -78,9 +69,7 @@ final class ConversionWorker {
     static func isDayTime(for dayTimeInformation: WeatherInformationDTO.DayInformation?, coordinates: WeatherInformationDTO.Coordinates) -> Bool? {
       
       guard let sunrise =  dayTimeInformation?.sunrise,
-        let sunset =  dayTimeInformation?.sunset,
-        let latitude = coordinates.latitude,
-        let longitude = coordinates.longitude else {
+        let sunset =  dayTimeInformation?.sunset else {
           return nil
       }
       
