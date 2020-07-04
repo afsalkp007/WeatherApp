@@ -20,6 +20,7 @@ class LocationSearchController: UITableViewController {
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     var delegate: ChangeLocationDelegate?
+    let debouncer = Debouncer(delay: 1)
     
     // outlets
     @IBOutlet weak var locationSearchBar: UISearchBar!
@@ -86,7 +87,9 @@ extension LocationSearchController: MKLocalSearchCompleterDelegate, UISearchBarD
     // MARK: UISearchBar methods
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchCompleter.queryFragment = searchText
+        debouncer.schedule { [weak self] in
+            self?.searchCompleter.queryFragment = searchText
+        }
     }
     
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
