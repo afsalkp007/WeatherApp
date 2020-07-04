@@ -56,13 +56,12 @@ class ListViewController: UIViewController {
             self.present(nav, animated: true)
         }
         
-//        adapter.edit = { weatherDTO, indexPath in
-//            self.namesArray.remove(at: indexPath.row)
-//            self.defaults.set(self.namesArray, forKey: Constants.Keys.UserDefaults.kSavedNameArray)
-//            self.namesArray.forEach{ name in
-//                self.loadData(with: name)
-//            }
-//        }
+        adapter.edit = { weatherDTO, indexPath in
+            self.namesArray = self.namesArray.filter({$0 != weatherDTO.cityName})
+            self.defaults.set(self.namesArray, forKey: Constants.Keys.UserDefaults.kSavedNameArray)
+            self.adapter.items.remove(at: indexPath.row)
+            self.tableView.reloadData()
+        }
     }
     
     private func configure(with weather: WeatherInformationDTO, cell: ListCell) {
