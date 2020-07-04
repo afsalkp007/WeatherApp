@@ -34,6 +34,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JCT-eY-h8G">
                             <connections>
                                 <action selector="addBookmark:" destination="z66-cl-ixw" id="jwP-2m-HtN"/>
+                                <segue destination="vAv-ux-At9" kind="presentation" identifier="showLocationSearch" id="hdd-Bk-hAi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -519,6 +520,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWl-YY-yYG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="151" y="-456"/>
+        </scene>
+        <!--Location Search-->
+        <scene sceneID="DJK-O0-CcN">
+            <objects>
+                <tableViewController id="0Sv-Y3-N29" customClass="LocationSearchController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JFj-7W-Xoc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="town, location, post code" id="sfT-hu-mCB">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationResultCell" id="fB0-2w-ENv">
+                                <rect key="frame" x="0.0" y="72" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fB0-2w-ENv" id="eHd-TP-jc9">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0Sv-Y3-N29" id="G6S-C0-wjI"/>
+                            <outlet property="delegate" destination="0Sv-Y3-N29" id="wc3-q3-7u8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Location Search" id="UgI-ta-TbZ"/>
+                    <connections>
+                        <outlet property="locationSearchBar" destination="sfT-hu-mCB" id="GNv-Ce-8bb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YCG-NY-eSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2106" y="288"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PXQ-Yx-erU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vAv-ux-At9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XZB-iS-20f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0Sv-Y3-N29" kind="relationship" relationship="rootViewController" id="oUA-pu-wyK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jpt-Cb-mpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199" y="288"/>
         </scene>
     </scenes>
     <resources>

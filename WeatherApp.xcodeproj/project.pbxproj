@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22C4D3DFAA4C2C7DCE128E30 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 313040D47480029A2B936BD9 /* Pods_WeatherApp.framework */; };
+		C256FE7224B0710A00F5C98B /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256FE7124B0710A00F5C98B /* LocationSearchController.swift */; };
 		C29F031824AEF6A200124257 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F031724AEF6A200124257 /* Adapter.swift */; };
 		C29F031F24AEFB1600124257 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F031D24AEFB1600124257 /* ListCell.swift */; };
 		C29F032024AEFB1600124257 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29F031E24AEFB1600124257 /* ListCell.xib */; };
@@ -60,6 +61,7 @@
 		313040D47480029A2B936BD9 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A66A89A6BB809B649D1B00ED /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AC72F3FDCD923B1EB9EADA99 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
+		C256FE7124B0710A00F5C98B /* LocationSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
 		C29F031724AEF6A200124257 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		C29F031D24AEFB1600124257 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		C29F031E24AEFB1600124257 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 				AC72F3FDCD923B1EB9EADA99 /* Pods-WeatherApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C256FE7024B070F400F5C98B /* LocationSearch */ = {
+			isa = PBXGroup;
+			children = (
+				C256FE7124B0710A00F5C98B /* LocationSearchController.swift */,
+			);
+			path = LocationSearch;
 			sourceTree = "<group>";
 		};
 		C29F031624AEF67600124257 /* Adapter */ = {
@@ -324,6 +334,7 @@
 		C2B24A7D24AEF0EA000A367D /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				C256FE7024B070F400F5C98B /* LocationSearch */,
 				C2A36C8F24AFA9FF005DD8AA /* Search */,
 				C2A36C7924AF7A8F005DD8AA /* AddFavourite */,
 				C2A36C5E24AF53B8005DD8AA /* WeatherDetail */,
@@ -563,6 +574,7 @@
 				C2A36C6E24AF6A07005DD8AA /* Constants+Messages.swift in Sources */,
 				C29F031824AEF6A200124257 /* Adapter.swift in Sources */,
 				C2B24A6124AEEF11000A367D /* AppDelegate.swift in Sources */,
+				C256FE7224B0710A00F5C98B /* LocationSearchController.swift in Sources */,
 				C2A36C6824AF6965005DD8AA /* Constants+Theme.swift in Sources */,
 				C2A36C9824AFC02A005DD8AA /* NSLayoutConstraint+Extensions.swift in Sources */,
 				C2A36C3D24AF2805005DD8AA /* TemperatureUnitOption.swift in Sources */,
@@ -721,7 +733,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DYLPX4LAWP;
 				INFOPLIST_FILE = WeatherApp/Resource/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -741,7 +753,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DYLPX4LAWP;
 				INFOPLIST_FILE = WeatherApp/Resource/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

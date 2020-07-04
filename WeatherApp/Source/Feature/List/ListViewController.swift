@@ -76,6 +76,17 @@ class ListViewController: UIViewController {
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showLocationSearch" {
+            
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let targetViewController = destinationNavigationController.topViewController as! LocationSearchController
+            targetViewController.delegate = self
+            
+        }
+    }
+    
     // MARK: - Action
 
     @objc private func refresh() {
@@ -83,8 +94,8 @@ class ListViewController: UIViewController {
     }
     
     @IBAction func addBookmark(_ sender: UIBarButtonItem) {
-        let viewController = AddFavouriteViewController(weatherDataService: weatherService)
-        self.navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = AddFavouriteViewController(weatherDataService: weatherService)
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func handle(_ weather: WeatherInformationDTO?) {
@@ -95,5 +106,11 @@ class ListViewController: UIViewController {
       UIView.animate(withDuration: 0.25, animations: {
         self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
       })
+    }
+}
+
+extension ListViewController: ChangeLocationDelegate {
+    func newLocationEntered(lat: String, lon: String) {
+        print(lat)
     }
 }

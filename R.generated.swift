@@ -89,6 +89,30 @@ struct R: Rswift.Validatable {
   }
 
   #if os(iOS) || os(tvOS)
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
+  struct segue {
+    /// This struct is generated for `ListViewController`, and contains static references to 1 segues.
+    struct listViewController {
+      /// Segue identifier `showLocationSearch`.
+      static let showLocationSearch: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, ListViewController, UIKit.UINavigationController> = Rswift.StoryboardSegueIdentifier(identifier: "showLocationSearch")
+
+      #if os(iOS) || os(tvOS)
+      /// Optionally returns a typed version of segue `showLocationSearch`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func showLocationSearch(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ListViewController, UIKit.UINavigationController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.listViewController.showLocationSearch, segue: segue)
+      }
+      #endif
+
+      fileprivate init() {}
+    }
+
+    fileprivate init() {}
+  }
+  #endif
+
+  #if os(iOS) || os(tvOS)
   /// This `R.storyboard` struct is generated, and contains static references to 2 storyboards.
   struct storyboard {
     /// Storyboard `LaunchScreen`.
@@ -307,12 +331,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `AddFavoriteCell`.
     static let addFavoriteCell: Rswift.ReuseIdentifier<AddFavoriteCell> = Rswift.ReuseIdentifier(identifier: "AddFavoriteCell")
     /// Reuse identifier `ListCell`.
     static let listCell: Rswift.ReuseIdentifier<ListCell> = Rswift.ReuseIdentifier(identifier: "ListCell")
+    /// Reuse identifier `LocationResultCell`.
+    static let locationResultCell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "LocationResultCell")
 
     fileprivate init() {}
   }
