@@ -15,12 +15,20 @@ class ListViewController: UIViewController {
     private let adapter = Adapter<WeatherInformationDTO, ListCell>()
     private var refreshControl = UIRefreshControl()
      private let emptyView = EmptyView(text: "No cities found!, Add some cities as Favourites")
+    private var namesArray = [String]()
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "Bookmarks"
         setupTableView()
+        
+        let array = defaults.object(forKey: Constants.Keys.UserDefaults.kSavedNameArray) as? [String]
+        namesArray = array ?? []
+        namesArray.forEach{ name in
+            loadData(with: name)
+        }
     }
     
     private func setupTableView() {
@@ -47,6 +55,14 @@ class ListViewController: UIViewController {
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
         }
+        
+//        adapter.edit = { weatherDTO, indexPath in
+//            self.namesArray.remove(at: indexPath.row)
+//            self.defaults.set(self.namesArray, forKey: Constants.Keys.UserDefaults.kSavedNameArray)
+//            self.namesArray.forEach{ name in
+//                self.loadData(with: name)
+//            }
+//        }
     }
     
     private func configure(with weather: WeatherInformationDTO, cell: ListCell) {
@@ -98,6 +114,8 @@ class ListViewController: UIViewController {
 
 extension ListViewController: ChangeLocationDelegate {
     func newLocationEntered(name: String) {
+        namesArray.append(name)
+        defaults.set(namesArray, forKey: Constants.Keys.UserDefaults.kSavedNameArray)
         loadData(with: name)
     }
 }

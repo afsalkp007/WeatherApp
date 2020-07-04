@@ -20,6 +20,12 @@ extension Constants.Keys {
 }
 
 extension Constants.Keys {
+    enum UserDefaults {
+         static let kSavedNameArray = "SavedNameArray"
+    }
+}
+
+extension Constants.Keys {
   
   enum NotificationCenter {
     static let kWeatherServiceDidUpdate = "de.erikmaximilianmartens.nearbyWeather.weatherServiceDidUpdate"
