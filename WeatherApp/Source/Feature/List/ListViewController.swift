@@ -127,10 +127,8 @@ class ListViewController: UIViewController {
     }
     
     func setupEmptyView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            UIView.animate(withDuration: 0.25, animations: {
-              self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
-            })
+        UIView.animate(withDuration: 0.25, animations: {
+            self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
         })
     }
 }

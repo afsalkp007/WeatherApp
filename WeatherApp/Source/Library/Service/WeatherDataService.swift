@@ -27,7 +27,7 @@ final class WeatherDataService {
     }
     
     
-    /// Fetch restaurant data
+    /// Fetch bookmarks data
     /// - Parameter completion: Called when operation finishes
     func fetchBookmarkedLocations(_ location: String, completion: @escaping (Result<WeatherInformationDTO?>) -> Void) {
         let resource = Resource(url: Constants.Urls.kOpenWeatherBaseUrl, path: "data/2.5/weather", parameters:
@@ -38,6 +38,21 @@ final class WeatherDataService {
         _ = networking.fetch(resource: resource, completion: { data in
             DispatchQueue.main.async {
                 completion(.success(data.flatMap({ WeatherInformationDTO.make(data: $0) }) ))
+            }
+        })
+    }
+    
+    /// Fetch forecaset data
+    /// - Parameter completion: Called when operation finishes
+    func fetchFiveDayForecast(_ location: String, completion: @escaping (Result<[List]?>) -> Void) {
+        let resource = Resource(url: Constants.Urls.kOpenWeatherBaseUrl, path: "data/2.5/forecast", parameters:
+            ["q": location,
+             "appid": apiKey
+        ])
+        
+        _ = networking.fetch(resource: resource, completion: { data in
+            DispatchQueue.main.async {
+                completion(.success(data.flatMap({ WeatherForecastDTO.make(data: $0) })?.list ?? [] ))
             }
         })
     }

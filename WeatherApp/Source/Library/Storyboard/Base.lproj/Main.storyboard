@@ -7,6 +7,17 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Light.otf">
+            <string>ProximaNova-Light</string>
+        </array>
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+        <array key="ProximaNova-Semibold.otf">
+            <string>ProximaNova-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--List View Controller-->
         <scene sceneID="1rC-yl-VDy">
@@ -57,10 +68,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QiL-Lz-XQK" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="815.5"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="830.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="gDZ-HP-Obg" userLabel="Container Stack View">
-                                                <rect key="frame" x="20" y="0.0" width="335" height="815.5"/>
+                                                <rect key="frame" x="20" y="0.0" width="335" height="830.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1JR-YF-bC7" userLabel="Header Stack View">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="176.5"/>
@@ -419,32 +430,29 @@
                                                             </view>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RgX-wj-9PT">
-                                                        <rect key="frame" x="0.0" y="785.5" width="335" height="30"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RgX-wj-9PT">
+                                                        <rect key="frame" x="0.0" y="785.5" width="335" height="45"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKa-SF-2sg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64s-eO-nNa">
-                                                                        <rect key="frame" x="116" y="10" width="103.5" height="10"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" secondItem="64s-eO-nNa" secondAttribute="height" multiplier="207:20" id="Uvf-7w-gJy"/>
-                                                                            <constraint firstAttribute="height" constant="10" id="bBh-Zl-3dX"/>
-                                                                        </constraints>
-                                                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <state key="normal" image="OpenWeatherMapLogo"/>
-                                                                        <connections>
-                                                                            <action selector="openWeatherButtonPressed:" destination="0cU-e2-hWg" eventType="touchUpInside" id="152-MO-c5S"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64s-eO-nNa">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="45"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="64s-eO-nNa" secondAttribute="bottom" constant="10" id="Jg5-Hc-cZT"/>
-                                                                    <constraint firstItem="64s-eO-nNa" firstAttribute="top" secondItem="aKa-SF-2sg" secondAttribute="top" constant="10" id="OIy-My-II6"/>
-                                                                    <constraint firstItem="64s-eO-nNa" firstAttribute="centerX" secondItem="aKa-SF-2sg" secondAttribute="centerX" id="zLR-RZ-doH"/>
+                                                                    <constraint firstAttribute="height" constant="45" id="7Fd-tV-KSx"/>
                                                                 </constraints>
-                                                            </view>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" title="Get Dialy Forecast">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="get5DayForecast:" destination="0cU-e2-hWg" eventType="touchUpInside" id="9OC-Fc-1f7"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
@@ -553,6 +561,87 @@
             </objects>
             <point key="canvasLocation" x="2106" y="288"/>
         </scene>
+        <!--Forecast View Controller-->
+        <scene sceneID="96S-Ry-7oc">
+            <objects>
+                <tableViewController storyboardIdentifier="ForecastViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="722-3K-DEk" customClass="ForecastViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="91" sectionHeaderHeight="28" sectionFooterHeight="28" id="M3n-tf-hkv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="Nu1-Pd-mY3"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ForecastDayTableViewCell" rowHeight="90" id="1lA-8h-2ic" customClass="ForecastDayTableViewCell" customModule="WeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1lA-8h-2ic" id="9l2-xb-MIv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QVH-4S-9a8">
+                                            <rect key="frame" x="16" y="11" width="343" height="68"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="0mk-W1-FFj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="61" height="68"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="61" id="WpC-Fj-75R"/>
+                                                        <constraint firstAttribute="height" constant="61" id="hSE-aH-epl"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KrM-OS-WHP">
+                                                    <rect key="frame" x="71" y="0.0" width="186" height="68"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Q4o-yD-6UF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="36.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="opU-FB-M9I"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="24"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rain Showers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpP-Kb-hOw">
+                                                            <rect key="frame" x="0.0" y="41.5" width="120" height="26.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="120" id="Eht-Ld-6s8"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsL-PI-Jkk">
+                                                    <rect key="frame" x="267" y="0.0" width="76" height="68"/>
+                                                    <fontDescription key="fontDescription" name="ProximaNova-Light" family="Proxima Nova" pointSize="50"/>
+                                                    <color key="textColor" red="0.2156862745" green="0.5568627451" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="QVH-4S-9a8" secondAttribute="trailing" id="Cbk-nW-N8h"/>
+                                        <constraint firstItem="QVH-4S-9a8" firstAttribute="leading" secondItem="9l2-xb-MIv" secondAttribute="leadingMargin" id="PB9-RJ-71g"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QVH-4S-9a8" secondAttribute="bottom" id="nLW-cF-BlG"/>
+                                        <constraint firstItem="QVH-4S-9a8" firstAttribute="top" secondItem="9l2-xb-MIv" secondAttribute="topMargin" id="nd7-5I-T5y"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="100" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="temperatureLabel" destination="hsL-PI-Jkk" id="kLG-QM-vB9"/>
+                                    <outlet property="weatherConditionImageView" destination="0mk-W1-FFj" id="uBO-QH-YiO"/>
+                                    <outlet property="weatherConditionLabel" destination="RpP-Kb-hOw" id="Ox1-9i-npq"/>
+                                    <outlet property="weekdayLabel" destination="Q4o-yD-6UF" id="AjY-hv-nqb"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdA-gE-0VK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="150" y="316"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="PXQ-Yx-erU">
             <objects>
@@ -574,11 +663,11 @@
     </scenes>
     <resources>
         <image name="AirPressure" width="25" height="25"/>
+        <image name="AppLogo" width="512" height="512"/>
         <image name="CloudCover" width="25" height="25"/>
         <image name="Distance" width="25" height="25"/>
         <image name="Humidity" width="25" height="25"/>
         <image name="Location" width="25" height="25"/>
-        <image name="OpenWeatherMapLogo" width="207" height="20"/>
         <image name="Sunrise" width="25" height="25"/>
         <image name="Sunset" width="25" height="25"/>
         <image name="WindDirection" width="25" height="25"/>

@@ -19,6 +19,7 @@ extension Constants.Identifier {
     
     enum ViewController {
         static let kWeatherDetailViewController = "WeatherDetailViewController"
+        static let kForecastViewController = "ForecastViewController"
     }
     
     enum Segue {

@@ -11,9 +11,5 @@ extension Constants {
     enum Urls {
        
         static let kOpenWeatherBaseUrl = URL(string: "https://api.openweathermap.org")!
-        
-        static func kOpenWeatherMapCityDetailsUrl(forCityWithName name: String) -> URL {
-            return URL(string: "https://openweathermap.org/find?q=\(name)")!
-        }
     }
 }

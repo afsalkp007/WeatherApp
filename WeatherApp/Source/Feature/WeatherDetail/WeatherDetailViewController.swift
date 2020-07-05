@@ -8,11 +8,11 @@
 
 import UIKit
 import MapKit
-//import APTimeZones
 
 class WeatherDetailViewController: UIViewController {
     
-    var weatherDTO: WeatherInformationDTO!
+    // MARK: - Variables
+    var weatherDTO: WeatherInformationDTO?
     @IBOutlet weak var coordinatesNoteLabel: UILabel!
     @IBOutlet weak var distanceNoteLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -33,13 +33,15 @@ class WeatherDetailViewController: UIViewController {
     var preferredMapType: MKMapType = .standard
     
     @IBOutlet weak var timeLabel: UILabel!
+    
+    // MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = weatherDTO.cityName
+        title = weatherDTO?.cityName
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "VerticalCloseButton"),
+            image: UIImage(named: Constants.Image.name.kVerticalCloseButton),
             style: .plain,
             target: self,
             action: #selector(Self.dismissButtonTapped))
@@ -50,34 +52,28 @@ class WeatherDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         configure()
     }
     
     private func configure() {
         
-        let isDayTime = ConversionWorker.isDayTime(for: weatherDTO.dayInformation, coordinates: weatherDTO.coordinates) ?? true
+        let isDayTime = ConversionWorker.isDayTime(for: weatherDTO?.dayInformation, coordinates: weatherDTO?.coordinates) ?? true
         conditionSymbolLabel.text = ConversionWorker.weatherConditionSymbol(
-          fromWeatherCode: weatherDTO.weatherCondition[0].identifier,
+            fromWeatherCode: weatherDTO?.weatherCondition[0].identifier,
           isDayTime: isDayTime
         )
         
-        conditionNameLabel.text = weatherDTO.weatherCondition.first?.conditionName
-        conditionDescriptionLabel.text = weatherDTO.weatherCondition.first?.description?.capitalized
-        temperatureLabel.text = "\(ConversionWorker.convertToCelsius(weatherDTO.atmosphericInformation.temperatureKelvin ?? 0.0)) \(Constants.Values.TemperatureUnit.kCelsius)"
+        conditionNameLabel.text = weatherDTO?.weatherCondition.first?.conditionName
+        conditionDescriptionLabel.text = weatherDTO?.weatherCondition.first?.description?.capitalized
+        temperatureLabel.text = "\(ConversionWorker.convertToCelsius(weatherDTO?.atmosphericInformation.temperatureKelvin ?? 0.0)) \(Constants.Values.TemperatureUnit.kCelsius)"
         
         if let sunriseTimeSinceReferenceDate = weatherDTO?.dayInformation.sunrise,
-            let sunsetTimeSinceReferenceDate = weatherDTO?.dayInformation.sunset,
-            let latitude = weatherDTO?.coordinates.latitude,
-            let longitude = weatherDTO?.coordinates.longitude {
+            let sunsetTimeSinceReferenceDate = weatherDTO?.dayInformation.sunset {
             let sunriseDate = Date(timeIntervalSince1970: sunriseTimeSinceReferenceDate)
             let sunsetDate = Date(timeIntervalSince1970: sunsetTimeSinceReferenceDate)
             
-            let location = CLLocation(latitude: latitude, longitude: longitude)
-            
             let dateFormatter = DateFormatter()
             dateFormatter.calendar = .current
-            //dateFormatter.timeZone = location.timeZone()
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
             
@@ -99,8 +95,8 @@ class WeatherDetailViewController: UIViewController {
         
         coordinatesNoteLabel.text = TitleManager.coordinates.localized
         coordinatesLabel.text = ""
-          .append(contentsOfConvertible: weatherDTO.coordinates.latitude, delimiter: .none)
-          .append(contentsOfConvertible: weatherDTO.coordinates.longitude, delimiter: .comma)
+            .append(contentsOfConvertible: weatherDTO?.coordinates.latitude, delimiter: .none)
+            .append(contentsOfConvertible: weatherDTO?.coordinates.longitude, delimiter: .comma)
         
      
     }
@@ -109,10 +105,10 @@ class WeatherDetailViewController: UIViewController {
         self.dismiss(animated: true)
     }
 
-    @IBAction func openWeatherButtonPressed(_ sender: UIButton) {
-        presentSafariViewController(for:
-          Constants.Urls.kOpenWeatherMapCityDetailsUrl(forCityWithName: weatherDTO.cityName)
-        )
+    @IBAction func get5DayForecast(_ sender: UIButton) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.ViewController.kForecastViewController) as? ForecastViewController else { return }
+        vc.weatherDTO = weatherDTO
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

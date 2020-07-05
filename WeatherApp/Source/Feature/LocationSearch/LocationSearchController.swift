@@ -25,6 +25,7 @@ class LocationSearchController: UITableViewController {
     // MARK: - outlets
     @IBOutlet weak var locationSearchBar: UISearchBar!
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +33,10 @@ class LocationSearchController: UITableViewController {
         searchCompleter.filterType = .locationsOnly
         locationSearchBar.delegate = self
        
+        setupTableView()
+    }
+    
+    private func setupTableView() {
         adapter.cellHeight = 44.0
         tableView.delegate = adapter
         tableView.dataSource = adapter

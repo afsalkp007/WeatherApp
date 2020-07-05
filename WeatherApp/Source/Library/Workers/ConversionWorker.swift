@@ -66,7 +66,7 @@ final class ConversionWorker {
         return String(format: "%.0f", celsiusTemp)
     }
     
-    static func isDayTime(for dayTimeInformation: WeatherInformationDTO.DayInformation?, coordinates: WeatherInformationDTO.Coordinates) -> Bool? {
+    static func isDayTime(for dayTimeInformation: DayInformation?, coordinates: Coordinates?) -> Bool? {
       
       guard let sunrise =  dayTimeInformation?.sunrise,
         let sunset =  dayTimeInformation?.sunset else {

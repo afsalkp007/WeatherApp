@@ -46,7 +46,7 @@ final class EmptyView: UIView {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFit
     imageView.clipsToBounds = true
-    imageView.image = UIImage(named: "SadCloud")
+    imageView.image = UIImage(named: Constants.Image.name.kSadCloud)
     return imageView
   }
 
