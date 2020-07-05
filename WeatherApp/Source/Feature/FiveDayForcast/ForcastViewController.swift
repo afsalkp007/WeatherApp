@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForecastViewController: UIViewController {
+class ForcastViewController: UIViewController {
     
     // MARK: - Variables
     var weatherDTO: WeatherInformationDTO?
@@ -16,7 +16,7 @@ class ForecastViewController: UIViewController {
     private let weatherService = WeatherDataService(networking: NetworkService())
     private let viewModels = [ForecastViewModel]()
     private let adapter = Adapter<ForecastViewModel, ForecastDayTableViewCell>()
-    private let emptyView = EmptyView(text: "No data found!")
+    private let emptyView = EmptyView(text: TitleManager.no_data_found.localized)
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {

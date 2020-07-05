@@ -13,7 +13,6 @@ struct ForecastViewModel {
     var temperature: String?
     var weatherCondition: String?
     var icon: UIImage?
-    private let defaultString = "-"
     
     init(model: WeatherInformationDTO) {
         self.weekday = ForecastViewModel.getDayOfWeek(from: model.date ?? 0.0)

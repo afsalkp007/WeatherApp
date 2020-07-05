@@ -117,7 +117,7 @@ class WeatherDetailViewController: UIViewController {
     }
 
     @IBAction func get5DayForecast(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.ViewController.kForecastViewController) as? ForecastViewController else { return }
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.ViewController.kForecastViewController) as? ForcastViewController else { return }
         vc.weatherDTO = weatherDTO
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -142,7 +142,7 @@ extension WeatherDetailViewController: MKMapViewDelegate {
     
       fillColor = annotation.isDayTime ?? true
         ? Constants.Theme.Color.BrandColors.standardDay
-        : Constants.Theme.Color.BrandColors.standardNight // default to blue colored cells
+        : Constants.Theme.Color.BrandColors.standardNight 
       
       textColor = .white
     

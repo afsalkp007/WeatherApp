@@ -43,7 +43,7 @@ final class WeatherDataService {
         })
     }
     
-    /// Fetch forecastt data
+    /// Fetch forecast data
     /// - Parameter completion: Called when operation finishes
     func fetchFiveDayForecast(_ location: String, completion: @escaping (Result<[WeatherInformationDTO]?>) -> Void) {
         let resource = Resource(url: Constants.Urls.kOpenWeatherBaseUrl, path: "data/2.5/forecast", parameters:

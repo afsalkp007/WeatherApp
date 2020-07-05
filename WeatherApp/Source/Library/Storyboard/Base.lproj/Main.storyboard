@@ -24,7 +24,7 @@
             <objects>
                 <viewController id="z66-cl-ixw" customClass="ListViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vZA-fi-K5J">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zmu-I6-F8a">
@@ -391,7 +391,7 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="Get Dialy Forecast">
+                                                                <state key="normal" title="Get Five Day Forecast">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -456,11 +456,11 @@
             </objects>
             <point key="canvasLocation" x="1892" y="-455.62218890554726"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--List-->
         <scene sceneID="IaW-mQ-eng">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="97p-5w-rr6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tabbar_list_ios11" id="4cx-bq-ubK"/>
+                    <tabBarItem key="tabBarItem" title="List" image="tabbar_list_ios11" id="4cx-bq-ubK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SkS-pd-54y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -511,28 +511,28 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Hq4-27-zD6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="of3-DZ-LDO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController id="mR6-ae-dAJ" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cKm-o0-wZ3">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="cKm-o0-wZ3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="97p-5w-rr6" kind="relationship" relationship="viewControllers" id="5ES-8e-tbr"/>
                         <segue destination="GtL-VI-ymZ" kind="relationship" relationship="viewControllers" id="Eeo-P5-5Fi"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="of3-DZ-LDO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1582" y="-455"/>
+            <point key="canvasLocation" x="-1214" y="-427"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="IUx-ug-PJj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K1m-Zo-1go" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bNq-al-a6f" customClass="MapViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xPk-Qy-GHn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mwP-S3-78V">
@@ -553,13 +553,14 @@
                         <outlet property="mapView" destination="mwP-S3-78V" id="lUM-89-SzQ"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K1m-Zo-1go" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="328.80000000000001" y="343.17841079460271"/>
         </scene>
-        <!--Forecast View Controller-->
+        <!--Forcast View Controller-->
         <scene sceneID="2YP-7b-KUm">
             <objects>
-                <viewController storyboardIdentifier="ForecastViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OsN-f5-mGT" customClass="ForecastViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForcastViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OsN-f5-mGT" customClass="ForcastViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uNr-OT-zig">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -670,11 +671,11 @@
             </objects>
             <point key="canvasLocation" x="2136.8000000000002" y="287.40629685157421"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="RWL-6T-zUb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GtL-VI-ymZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_map_ios11" id="EKj-DJ-zxO"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="tabbar_map_ios11" id="EKj-DJ-zxO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xpo-wS-UiY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

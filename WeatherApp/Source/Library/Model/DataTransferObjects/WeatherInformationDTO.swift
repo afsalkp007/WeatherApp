@@ -20,7 +20,6 @@ struct WeatherInformationDTO : Codable {
     var cityID : Int?
     var cityName : String?
     let date : Double?
-     let dt_txt : String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -33,7 +32,6 @@ struct WeatherInformationDTO : Codable {
         case cityID = "id"
         case cityName = "name"
         case date = "dt"
-        case dt_txt = "dt_txt"
     }
     
     init(from decoder: Decoder) throws {
@@ -47,7 +45,6 @@ struct WeatherInformationDTO : Codable {
         cityID = try values.decodeIfPresent(Int.self, forKey: .cityID)
         cityName = try values.decodeIfPresent(String.self, forKey: .cityName)
         date = try values.decodeIfPresent(Double.self, forKey: .date)
-        dt_txt = try values.decodeIfPresent(String.self, forKey: .dt_txt)
     }
     
     static func make(data: Data) -> WeatherInformationDTO? {

@@ -14,14 +14,14 @@ class ListViewController: UIViewController {
     private let weatherService = WeatherDataService(networking: NetworkService())
     private let adapter = Adapter<WeatherInformationDTO, ListCell>()
     private var refreshControl = UIRefreshControl()
-     private let emptyView = EmptyView(text: "No cities found!, Add some cities as Favourites")
+    private let emptyView = EmptyView(text: TitleManager.no_data_found.localized, subText: TitleManager.pls_add_cities.localized)
     private var namesArray = [String]()
     let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Bookmarks"
+        self.navigationItem.title = TitleManager.book_marks.localized
         setupTableView()
         
         let array = defaults.object(forKey: Constants.Keys.UserDefaults.kSavedNameArray) as? [String]
@@ -87,7 +87,7 @@ class ListViewController: UIViewController {
         
         cell.cloudCoverLabel.text = weather.cloudCoverage?.coverage?.append(contentsOf: "%", delimiter: .none)
         cell.humidityLabel.text = weather.atmosphericInformation?.humidity?.append(contentsOf: "%", delimiter: .none)
-        cell.windSpeedLabel.text = "\(weather.windInformation?.windSpeed ?? 0.0) km/h"
+        cell.windSpeedLabel.text = "\(weather.windInformation?.windSpeed ?? 0.0) \(TitleManager.kph.localized)"
     }
     
     private func loadData(with cityName: String) {

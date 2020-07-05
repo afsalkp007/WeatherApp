@@ -21,16 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           return true
         }
         
-        guard let tabController = (window?.rootViewController as? UINavigationController)?.topViewController as? UITabBarController else { return false }
-        
-        tabController.tabBar.items?.forEach { tabBarItem in
-            tabBarItem.title = ""
-            tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
-        }
+        setUpTabbar()
         
         return true
     }
+}
 
-
+extension AppDelegate {
+    private func setUpTabbar() {
+        guard let tabController = (window?.rootViewController as? UINavigationController)?.topViewController as? UITabBarController else { return }
+        
+        tabController.tabBar.items?.forEach { tabBarItem in
+            tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        }
+    }
 }
 
