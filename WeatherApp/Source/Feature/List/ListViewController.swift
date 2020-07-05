@@ -106,7 +106,7 @@ class ListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "showLocationSearch" {
+        if segue.identifier == Constants.Identifier.Segue.kShowLocationSearch {
             
             let destinationNavigationController = segue.destination as! UINavigationController
             let targetViewController = destinationNavigationController.topViewController as! LocationSearchController
