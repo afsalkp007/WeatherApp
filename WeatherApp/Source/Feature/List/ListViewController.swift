@@ -42,6 +42,7 @@ class ListViewController: UIViewController {
     private func setupTableView() {
         
         tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
         tableView.register(cellType: ListCell.self)
         
@@ -57,7 +58,7 @@ class ListViewController: UIViewController {
         }
         
         adapter.select = { [unowned self] weatherDTO in
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Keys.ViewController.kWeatherDetailViewController) as? WeatherDetailViewController else { return }
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.ViewController.kWeatherDetailViewController) as? WeatherDetailViewController else { return }
             vc.weatherDTO = weatherDTO
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
@@ -71,6 +72,11 @@ class ListViewController: UIViewController {
             self.tableView.reloadData()
             self.setupEmptyView()
         }
+    }
+    
+    @objc private func refreshData() {
+        tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     private func configure(with weather: WeatherInformationDTO, cell: ListCell) {
@@ -114,10 +120,10 @@ class ListViewController: UIViewController {
             setupEmptyView()
             return
         }
+        
         adapter.items.append(weather)
-      tableView.reloadData()
-
-      setupEmptyView()
+        tableView.reloadData()
+        setupEmptyView()
     }
     
     func setupEmptyView() {

@@ -20,6 +20,7 @@ class LocationSearchController: UITableViewController {
     var searchResults = [MKLocalSearchCompletion]()
     var delegate: ChangeLocationDelegate?
     let debouncer = Debouncer(delay: 0.1)
+    let adapter = Adapter<MKLocalSearchCompletion, LocationResultCell>()
     
     // MARK: - outlets
     @IBOutlet weak var locationSearchBar: UISearchBar!
@@ -31,52 +32,85 @@ class LocationSearchController: UITableViewController {
         searchCompleter.filterType = .locationsOnly
         locationSearchBar.delegate = self
        
-    }
-    
-    
-}
-
-extension LocationSearchController {
-    // MARK: UITableView methods
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        adapter.cellHeight = 44.0
+        tableView.delegate = adapter
+        tableView.dataSource = adapter
         
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = " \(searchResults[indexPath.row].title), \(searchResults[indexPath.row].subtitle)"
+        adapter.configure = { item, cell in
+            cell.textLabel?.text = "\(item.title), \(item.subtitle)"
+        }
         
-        let search = MKLocalSearch(request: request)
-        search.start { (response, error) in
+        adapter.select = { item in
+            let request = MKLocalSearch.Request()
+            request.naturalLanguageQuery = " \(item.title), \(item.subtitle)"
             
-            if error != nil {
+            let search = MKLocalSearch(request: request)
+            search.start { (response, error) in
                 
-            } else {
-                guard let response = response else {
-                    return
-                }
-                
-                for location in response.mapItems {
-                    self.delegate?.newLocationEntered(name: location.name ?? "")
-                    self.dismiss(animated: true, completion: nil)
+                if error != nil {
+                    
+                } else {
+                    guard let response = response else {
+                        return
+                    }
+                    
+                    for location in response.mapItems {
+                        self.delegate?.newLocationEntered(name: location.name ?? "")
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 }
             }
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Keys.ReuseIdentifier.kLocationResultCell, for: indexPath)
-        cell.textLabel?.text = "\(searchResults[indexPath.row].title), \(searchResults[indexPath.row].subtitle)"
-        return cell
+    private func handle(_ items: [MKLocalSearchCompletion]?) {
+        adapter.items = items ?? []
+        tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 }
+
+//extension LocationSearchController {
+//    // MARK: UITableView methods
+//
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let request = MKLocalSearch.Request()
+//        request.naturalLanguageQuery = " \(searchResults[indexPath.row].title), \(searchResults[indexPath.row].subtitle)"
+//
+//        let search = MKLocalSearch(request: request)
+//        search.start { (response, error) in
+//
+//            if error != nil {
+//
+//            } else {
+//                guard let response = response else {
+//                    return
+//                }
+//
+//                for location in response.mapItems {
+//                    self.delegate?.newLocationEntered(name: location.name ?? "")
+//                    self.dismiss(animated: true, completion: nil)
+//                }
+//            }
+//        }
+//    }
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Keys.ReuseIdentifier.kLocationResultCell, for: indexPath)
+//        cell.textLabel?.text = "\(searchResults[indexPath.row].title), \(searchResults[indexPath.row].subtitle)"
+//        return cell
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return searchResults.count
+//    }
+//
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//}
 
 extension LocationSearchController: MKLocalSearchCompleterDelegate, UISearchBarDelegate {
     
@@ -99,7 +133,7 @@ extension LocationSearchController: MKLocalSearchCompleterDelegate, UISearchBarD
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         searchResults = completer.results
         searchResults = cleanSearchResults()
-        tableView.reloadData()
+        handle(searchResults)
     }
     
     // MARK: misc methods
