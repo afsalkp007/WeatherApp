@@ -15,11 +15,11 @@ struct ForecastViewModel {
     var icon: UIImage?
     private let defaultString = "-"
     
-    init(model: List) {
+    init(model: WeatherInformationDTO) {
         self.weekday = ForecastViewModel.getDayOfWeek(from: model.date ?? 0.0)
-        self.weatherCondition = model.weather?[0].conditionName
+        self.weatherCondition = model.weatherCondition?[0].conditionName
         self.temperature = "\(ConversionWorker.convertToCelsius(model.atmosphericInformation?.temperatureKelvin ?? 0.0)) \(Constants.Values.TemperatureUnit.kCelsius)"
-        let weatherIcon = WeatherIcon(iconString: (model.weather?[0].icon ?? ""))
+        let weatherIcon = WeatherIcon(iconString: (model.weatherCondition?[0].icon ?? ""))
         self.icon = weatherIcon.image
     }
     

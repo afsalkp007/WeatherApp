@@ -11,46 +11,43 @@ import Foundation
 
 struct WeatherInformationDTO : Codable {
     
-    var coordinates : Coordinates
-    var weatherCondition : [WeatherCondition]
-    var atmosphericInformation : AtmosphericInformation
-    var visibility : Int
-    var windInformation : WindInformation
-    var cloudCoverage : Clouds
-    var dayInformation : DayInformation
-    var timezone : Int
-    var cityID : Int
-    var cityName : String
-    var cod : Int
+    var coordinates : Coordinates?
+    var weatherCondition : [WeatherCondition]?
+    var atmosphericInformation : AtmosphericInformation?
+    var windInformation : WindInformation?
+    var cloudCoverage : Clouds?
+    var dayInformation : DayInformation?
+    var cityID : Int?
+    var cityName : String?
+    let date : Double?
+     let dt_txt : String?
     
     enum CodingKeys: String, CodingKey {
         
         case coordinates = "coord"
         case weatherCondition = "weather"
         case atmosphericInformation = "main"
-        case visibility = "visibility"
         case windInformation = "wind"
         case cloudCoverage = "clouds"
         case dayInformation = "sys"
-        case timezone = "timezone"
         case cityID = "id"
         case cityName = "name"
-        case cod = "cod"
+        case date = "dt"
+        case dt_txt = "dt_txt"
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        coordinates = try values.decode(Coordinates.self, forKey: .coordinates)
-        weatherCondition = try values.decode([WeatherCondition].self, forKey: .weatherCondition)
-        atmosphericInformation = try values.decode(AtmosphericInformation.self, forKey: .atmosphericInformation)
-        visibility = try values.decode(Int.self, forKey: .visibility)
-        windInformation = try values.decode(WindInformation.self, forKey: .windInformation)
-        cloudCoverage = try values.decode(Clouds.self, forKey: .cloudCoverage)
-        dayInformation = try values.decode(DayInformation.self, forKey: .dayInformation)
-        timezone = try values.decode(Int.self, forKey: .timezone)
-        cityID = try values.decode(Int.self, forKey: .cityID)
-        cityName = try values.decode(String.self, forKey: .cityName)
-        cod = try values.decode(Int.self, forKey: .cod)
+        coordinates = try values.decodeIfPresent(Coordinates.self, forKey: .coordinates)
+        weatherCondition = try values.decodeIfPresent([WeatherCondition].self, forKey: .weatherCondition)
+        atmosphericInformation = try values.decodeIfPresent(AtmosphericInformation.self, forKey: .atmosphericInformation)
+        windInformation = try values.decodeIfPresent(WindInformation.self, forKey: .windInformation)
+        cloudCoverage = try values.decodeIfPresent(Clouds.self, forKey: .cloudCoverage)
+        dayInformation = try values.decodeIfPresent(DayInformation.self, forKey: .dayInformation)
+        cityID = try values.decodeIfPresent(Int.self, forKey: .cityID)
+        cityName = try values.decodeIfPresent(String.self, forKey: .cityName)
+        date = try values.decodeIfPresent(Double.self, forKey: .date)
+        dt_txt = try values.decodeIfPresent(String.self, forKey: .dt_txt)
     }
     
     static func make(data: Data) -> WeatherInformationDTO? {

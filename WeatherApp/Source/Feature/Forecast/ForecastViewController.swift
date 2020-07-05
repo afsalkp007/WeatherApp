@@ -8,13 +8,15 @@
 
 import UIKit
 
-class ForecastViewController: UITableViewController {
+class ForecastViewController: UIViewController {
     
     // MARK: - Variables
     var weatherDTO: WeatherInformationDTO?
+    @IBOutlet weak var tableView: UITableView!
     private let weatherService = WeatherDataService(networking: NetworkService())
     private let viewModels = [ForecastViewModel]()
     private let adapter = Adapter<ForecastViewModel, ForecastDayTableViewCell>()
+    private let emptyView = EmptyView(text: "No data found!")
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -26,6 +28,8 @@ class ForecastViewController: UITableViewController {
         adapter.cellHeight = 90.0
         tableView.delegate = adapter
         tableView.dataSource = adapter
+        tableView.layer.cornerRadius = 0
+        tableView.backgroundColor = UIColor.clear
         
         adapter.configure = { item, cell in
             cell.weatherConditionImageView.image = item.icon
@@ -33,6 +37,10 @@ class ForecastViewController: UITableViewController {
             cell.weatherConditionLabel.text = item.weatherCondition
             cell.temperatureLabel.text = item.temperature
         }
+        
+        view.addSubview(emptyView)
+        NSLayoutConstraint.pin(view: emptyView, toEdgesOf: view)
+        emptyView.alpha = 0
     }
     
     // MARK: - API
@@ -50,7 +58,16 @@ class ForecastViewController: UITableViewController {
     
     private func handle(_ vm: [ForecastViewModel]) {
         adapter.items = vm
+        tableView.separatorStyle = adapter.items.isEmpty ? .none : .singleLine
         tableView.reloadData()
+        
+        setupEmptyView()
+    }
+    
+    private func setupEmptyView() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
+        })
     }
 
 }

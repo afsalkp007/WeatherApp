@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 enum Result<T> {
     case success(T)
@@ -42,9 +43,9 @@ final class WeatherDataService {
         })
     }
     
-    /// Fetch forecaset data
+    /// Fetch forecastt data
     /// - Parameter completion: Called when operation finishes
-    func fetchFiveDayForecast(_ location: String, completion: @escaping (Result<[List]?>) -> Void) {
+    func fetchFiveDayForecast(_ location: String, completion: @escaping (Result<[WeatherInformationDTO]?>) -> Void) {
         let resource = Resource(url: Constants.Urls.kOpenWeatherBaseUrl, path: "data/2.5/forecast", parameters:
             ["q": location,
              "appid": apiKey
@@ -53,6 +54,22 @@ final class WeatherDataService {
         _ = networking.fetch(resource: resource, completion: { data in
             DispatchQueue.main.async {
                 completion(.success(data.flatMap({ WeatherForecastDTO.make(data: $0) })?.list ?? [] ))
+            }
+        })
+    }
+    
+    /// Fetch multiple station data
+    /// - Parameter completion: Called when operation finishes
+    func fetchNearbyLocations(_ coordinate: CLLocationCoordinate2D, completion: @escaping (Result<[WeatherInformationDTO]?>) -> Void) {
+        let resource = Resource(url: Constants.Urls.kOpenWeatherBaseUrl, path: "data/2.5/find", parameters:
+            ["appid": apiKey,
+             "lat": "\(coordinate.latitude)",
+                "lon": "\(coordinate.longitude)"
+        ])
+        
+        _ = networking.fetch(resource: resource, completion: { data in
+            DispatchQueue.main.async {
+                completion(.success(data.flatMap({ WeatherStationDTO.make(data: $0) })?.list ?? [] ))
             }
         })
     }

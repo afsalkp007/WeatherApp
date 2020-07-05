@@ -82,12 +82,12 @@ class ListViewController: UIViewController {
     private func configure(with weather: WeatherInformationDTO, cell: ListCell) {
         cell.cityNameLabel.text = weather.cityName
         
-        cell.temperatureLabel.text = "\(ConversionWorker.convertToCelsius(weather.atmosphericInformation.temperatureKelvin ?? 0.0)) \(Constants.Values.TemperatureUnit.kCelsius)"
+        cell.temperatureLabel.text = "\(ConversionWorker.convertToCelsius(weather.atmosphericInformation?.temperatureKelvin ?? 0.0)) \(Constants.Values.TemperatureUnit.kCelsius)"
     
         
-        cell.cloudCoverLabel.text = weather.cloudCoverage.coverage?.append(contentsOf: "%", delimiter: .none)
-        cell.humidityLabel.text = weather.atmosphericInformation.humidity?.append(contentsOf: "%", delimiter: .none)
-        cell.windSpeedLabel.text = "\(weather.windInformation.windSpeed ?? 0.0) km/h"
+        cell.cloudCoverLabel.text = weather.cloudCoverage?.coverage?.append(contentsOf: "%", delimiter: .none)
+        cell.humidityLabel.text = weather.atmosphericInformation?.humidity?.append(contentsOf: "%", delimiter: .none)
+        cell.windSpeedLabel.text = "\(weather.windInformation?.windSpeed ?? 0.0) km/h"
     }
     
     private func loadData(with cityName: String) {

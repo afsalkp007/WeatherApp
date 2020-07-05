@@ -55,8 +55,8 @@ class WeatherDetailViewController: UIViewController {
     }
     
     private func configureMap() {
-        guard let weatherLatitude = weatherDTO?.coordinates.latitude,
-            let weatherLongitude = weatherDTO?.coordinates.longitude else {
+        guard let weatherLatitude = weatherDTO?.coordinates?.latitude,
+            let weatherLongitude = weatherDTO?.coordinates?.longitude else {
           locationStackView.isHidden = true
           return
       }
@@ -77,16 +77,16 @@ class WeatherDetailViewController: UIViewController {
         
         let isDayTime = ConversionWorker.isDayTime(for: weatherDTO?.dayInformation, coordinates: weatherDTO?.coordinates) ?? true
         conditionSymbolLabel.text = ConversionWorker.weatherConditionSymbol(
-            fromWeatherCode: weatherDTO?.weatherCondition[0].identifier,
+            fromWeatherCode: weatherDTO?.weatherCondition?[0].identifier,
           isDayTime: isDayTime
         )
         
-        conditionNameLabel.text = weatherDTO?.weatherCondition.first?.conditionName
-        conditionDescriptionLabel.text = weatherDTO?.weatherCondition.first?.description?.capitalized
-        temperatureLabel.text = "\(ConversionWorker.convertToCelsius(weatherDTO?.atmosphericInformation.temperatureKelvin ?? 0.0)) \(Constants.Values.TemperatureUnit.kCelsius)"
+        conditionNameLabel.text = weatherDTO?.weatherCondition?.first?.conditionName
+        conditionDescriptionLabel.text = weatherDTO?.weatherCondition?.first?.description?.capitalized
+        temperatureLabel.text = "\(ConversionWorker.convertToCelsius(weatherDTO?.atmosphericInformation?.temperatureKelvin ?? 0.0)) \(Constants.Values.TemperatureUnit.kCelsius)"
         
-        if let sunriseTimeSinceReferenceDate = weatherDTO?.dayInformation.sunrise,
-            let sunsetTimeSinceReferenceDate = weatherDTO?.dayInformation.sunset {
+        if let sunriseTimeSinceReferenceDate = weatherDTO?.dayInformation?.sunrise,
+            let sunsetTimeSinceReferenceDate = weatherDTO?.dayInformation?.sunset {
             let sunriseDate = Date(timeIntervalSince1970: sunriseTimeSinceReferenceDate)
             let sunsetDate = Date(timeIntervalSince1970: sunsetTimeSinceReferenceDate)
             
@@ -99,15 +99,15 @@ class WeatherDetailViewController: UIViewController {
             sunsetLabel.text = dateFormatter.string(from: sunsetDate)
         }
         
-        cloudCoverLabel.text = weatherDTO?.cloudCoverage.coverage?.append(contentsOf: "%", delimiter: .none)
-        humidityLabel.text = weatherDTO?.atmosphericInformation.humidity?.append(contentsOf: "%", delimiter: .none)
-        pressureLabel.text = weatherDTO?.atmosphericInformation.pressurePsi?.append(contentsOf: "hpa", delimiter: .space)
+        cloudCoverLabel.text = weatherDTO?.cloudCoverage?.coverage?.append(contentsOf: "%", delimiter: .none)
+        humidityLabel.text = weatherDTO?.atmosphericInformation?.humidity?.append(contentsOf: "%", delimiter: .none)
+        pressureLabel.text = weatherDTO?.atmosphericInformation?.pressurePsi?.append(contentsOf: "hpa", delimiter: .space)
         
-        if let windspeed = weatherDTO?.windInformation.windSpeed {
+        if let windspeed = weatherDTO?.windInformation?.windSpeed {
             windSpeedLabel.text = "\(windspeed) \(TitleManager.kph.localized)"
         }
         
-        if let windDirection = weatherDTO?.windInformation.degree {
+        if let windDirection = weatherDTO?.windInformation?.degree {
             windSpeedLabel.text = "\(windDirection)"
         }
     }

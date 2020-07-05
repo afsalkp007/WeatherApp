@@ -32,15 +32,15 @@ final class WeatherLocationMapAnnotation: NSObject, MKAnnotation {
   
   convenience init?(weatherDTO: WeatherInformationDTO?) {
     guard let weatherDTO = weatherDTO,
-      let latitude = weatherDTO.coordinates.latitude,
-      let longitude = weatherDTO.coordinates.longitude else {
+        let latitude = weatherDTO.coordinates?.latitude,
+        let longitude = weatherDTO.coordinates?.longitude else {
         return nil
     }
     
     let isDayTime = ConversionWorker.isDayTime(for: weatherDTO.dayInformation, coordinates: weatherDTO.coordinates) ?? true
     
     var weatherConditionSymbol: String?
-    if let weatherConditionIdentifier = weatherDTO.weatherCondition.first?.identifier {
+    if let weatherConditionIdentifier = weatherDTO.weatherCondition?.first?.identifier {
       weatherConditionSymbol = ConversionWorker.weatherConditionSymbol(
         fromWeatherCode: weatherConditionIdentifier,
         isDayTime: isDayTime
@@ -58,7 +58,7 @@ final class WeatherLocationMapAnnotation: NSObject, MKAnnotation {
       subtitle: subtitle,
       isDayTime: isDayTime,
       coordinate: coordinate,
-      locationId: weatherDTO.cityID
+      locationId: weatherDTO.cityID ?? 0
     )
   }
 }

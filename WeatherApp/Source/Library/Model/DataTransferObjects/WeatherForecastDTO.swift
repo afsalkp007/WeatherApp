@@ -12,7 +12,7 @@ struct WeatherForecastDTO : Codable {
     let cod : String?
     let message : Int?
     let cnt : Int?
-    let list : [List]?
+    let list : [WeatherInformationDTO]?
     let city : City?
 
     enum CodingKeys: String, CodingKey {
@@ -29,7 +29,7 @@ struct WeatherForecastDTO : Codable {
         cod = try values.decodeIfPresent(String.self, forKey: .cod)
         message = try values.decodeIfPresent(Int.self, forKey: .message)
         cnt = try values.decodeIfPresent(Int.self, forKey: .cnt)
-        list = try values.decodeIfPresent([List].self, forKey: .list)
+        list = try values.decodeIfPresent([WeatherInformationDTO].self, forKey: .list)
         city = try values.decodeIfPresent(City.self, forKey: .city)
     }
     
@@ -74,37 +74,4 @@ struct City : Codable {
     }
 
 }
-
-struct List : Codable {
-    let date : Double?
-    let atmosphericInformation : AtmosphericInformation?
-    let weather : [WeatherCondition]?
-    let clouds : Clouds?
-    let wind : WindInformation?
-    let dt_txt : String?
-
-    enum CodingKeys: String, CodingKey {
-
-        case date = "dt"
-        case atmosphericInformation = "main"
-        case weather = "weather"
-        case clouds = "clouds"
-        case wind = "wind"
-        case dt_txt = "dt_txt"
-    }
-
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        date = try values.decodeIfPresent(Double.self, forKey: .date)
-        atmosphericInformation = try values.decodeIfPresent(AtmosphericInformation.self, forKey: .atmosphericInformation)
-        weather = try values.decodeIfPresent([WeatherCondition].self, forKey: .weather)
-        clouds = try values.decodeIfPresent(Clouds.self, forKey: .clouds)
-        wind = try values.decodeIfPresent(WindInformation.self, forKey: .wind)
-        dt_txt = try values.decodeIfPresent(String.self, forKey: .dt_txt)
-    }
-
-}
-
-
-
 
