@@ -18,7 +18,7 @@ class WeatherDataServiceTests: XCTestCase {
         weatherDataService.fetchBookmarkedLocations("", completion: { result in
             switch result {
             case .success(let weather):
-                XCTAssertEqual(weather?.weatherCondition.count, 1)
+                XCTAssertEqual(weather?.weatherCondition?.count, 1)
                         expectation.fulfill()
             case .failure(let error):
                 print(error.localizedDescription)

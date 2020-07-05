@@ -30,14 +30,6 @@ class MapViewController: UIViewController {
         
         configureMapView()
         getNearbyLocations()
-        
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(Self.reconfigureOnWeatherDataServiceDidUpdate),
-            name: Notification.Name(rawValue: Constants.Keys.NotificationCenter.kWeatherServiceDidUpdate),
-            object: nil
-        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,7 +124,6 @@ extension MapViewController: MKMapViewDelegate {
         
         let fillColor = UIColor.white
         let textColor = UIColor.black
-        
         
         viewForCurrentAnnotation?.annotation = annotation
         viewForCurrentAnnotation?.configure(

@@ -25,14 +25,4 @@ extension Constants.Keys {
     }
 }
 
-extension Constants.Keys {
-  
-  enum NotificationCenter {
-    static let kWeatherServiceDidUpdate = "de.erikmaximilianmartens.nearbyWeather.weatherServiceDidUpdate"
-    static let kLocationAuthorizationUpdated = "de.erikmaximilianmartens.nearbyWeather.locationAuthorizationUpdated"
-    static let kNetworkReachabilityChanged = "de.erikmaximilianmartens.nearbyWeather.networkReachabilityChanged"
-    static let kSortingOrientationPreferenceChanged = "de.erikmaximilianmartens.nearbyWeather.sortingOrientationPreferenceChanged"
-  }
-}
-
 

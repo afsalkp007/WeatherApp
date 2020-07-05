@@ -64,7 +64,6 @@ class WeatherDataTests: XCTestCase {
 
         XCTAssertEqual(weather.cityName, "Dubai")
         XCTAssertEqual(weather.cityID, 292223)
-        XCTAssertEqual(weather.timezone, 14400)
     }
 
 
