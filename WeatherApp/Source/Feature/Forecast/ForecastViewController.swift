@@ -20,6 +20,7 @@ class ForecastViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = weatherDTO?.cityName
         getFiveDayForecaset(weatherDTO?.cityName ?? "")
         
         adapter.cellHeight = 90.0

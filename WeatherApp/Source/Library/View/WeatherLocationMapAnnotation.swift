@@ -15,25 +15,22 @@ final class WeatherLocationMapAnnotation: NSObject, MKAnnotation {
   let isDayTime: Bool?
   let coordinate: CLLocationCoordinate2D
   let locationId: Int
-  let isBookmark: Bool
   
   init(
     title: String?,
     subtitle: String?,
     isDayTime: Bool?,
     coordinate: CLLocationCoordinate2D,
-    locationId: Int,
-    isBookmark: Bool
+    locationId: Int
   ) {
     self.title = title
     self.subtitle = subtitle
     self.isDayTime = isDayTime
     self.coordinate = coordinate
     self.locationId = locationId
-    self.isBookmark = isBookmark
   }
   
-  convenience init?(weatherDTO: WeatherInformationDTO?, isBookmark: Bool) {
+  convenience init?(weatherDTO: WeatherInformationDTO?) {
     guard let weatherDTO = weatherDTO,
       let latitude = weatherDTO.coordinates.latitude,
       let longitude = weatherDTO.coordinates.longitude else {
@@ -50,14 +47,6 @@ final class WeatherLocationMapAnnotation: NSObject, MKAnnotation {
       )
     }
     
-//    var temperatureDescriptor: String?
-//    if let temperatureKelvin = weatherDTO.atmosphericInformation.temperatureKelvin {
-//      temperatureDescriptor = ConversionWorker.temperatureDescriptor(
-//        forTemperatureUnit: PreferencesDataService.shared.temperatureUnit,
-//        fromRawTemperature: temperatureKelvin
-//      )
-//    }
-    
     let subtitle: String? = ""
       .append(contentsOf: weatherConditionSymbol, delimiter: .space)
       .ifEmpty(justReturn: nil)
@@ -69,8 +58,7 @@ final class WeatherLocationMapAnnotation: NSObject, MKAnnotation {
       subtitle: subtitle,
       isDayTime: isDayTime,
       coordinate: coordinate,
-      locationId: weatherDTO.cityID,
-      isBookmark: isBookmark
+      locationId: weatherDTO.cityID
     )
   }
 }

@@ -13,8 +13,6 @@ class WeatherDetailViewController: UIViewController {
     
     // MARK: - Variables
     var weatherDTO: WeatherInformationDTO?
-    @IBOutlet weak var coordinatesNoteLabel: UILabel!
-    @IBOutlet weak var distanceNoteLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var conditionSymbolLabel: UILabel!
     @IBOutlet weak var sunriseLabel: UILabel!
@@ -27,9 +25,8 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var conditionNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionDescriptionLabel: UILabel!
+    @IBOutlet weak var locationStackView: UIStackView!
     
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var coordinatesLabel: UILabel!
     var preferredMapType: MKMapType = .standard
     
     @IBOutlet weak var timeLabel: UILabel!
@@ -48,11 +45,32 @@ class WeatherDetailViewController: UIViewController {
         
         mapView.mapType = preferredMapType
         mapView.delegate = self
+        
+        configureMap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configure()
+    }
+    
+    private func configureMap() {
+        guard let weatherLatitude = weatherDTO?.coordinates.latitude,
+            let weatherLongitude = weatherDTO?.coordinates.longitude else {
+          locationStackView.isHidden = true
+          return
+      }
+      
+      // mapView
+      if let mapAnnotation = WeatherLocationMapAnnotation(weatherDTO: weatherDTO) {
+        mapView.layer.cornerRadius = 10
+        mapView.addAnnotation(mapAnnotation)
+        let location = CLLocation(latitude: weatherLatitude, longitude: weatherLongitude)
+        let region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
+        mapView.setRegion(region, animated: false)
+      } else {
+        mapView.isHidden = true
+      }
     }
     
     private func configure() {
@@ -92,13 +110,6 @@ class WeatherDetailViewController: UIViewController {
         if let windDirection = weatherDTO?.windInformation.degree {
             windSpeedLabel.text = "\(windDirection)"
         }
-        
-        coordinatesNoteLabel.text = TitleManager.coordinates.localized
-        coordinatesLabel.text = ""
-            .append(contentsOfConvertible: weatherDTO?.coordinates.latitude, delimiter: .none)
-            .append(contentsOfConvertible: weatherDTO?.coordinates.longitude, delimiter: .comma)
-        
-     
     }
     
     @objc private func dismissButtonTapped(_ sender: UIBarButtonItem) {
