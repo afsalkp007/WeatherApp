@@ -42,4 +42,16 @@ extension UIView {
   }
 }
 
+extension UIView {
+    func animate(from: CGFloat, to: CGFloat) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            
+            self.transform = CGAffineTransform.init(scaleX: from, y: from)
+            UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                self.transform = CGAffineTransform.init(scaleX: to, y: to)
+            })
+        })
+    }
+}
+
 

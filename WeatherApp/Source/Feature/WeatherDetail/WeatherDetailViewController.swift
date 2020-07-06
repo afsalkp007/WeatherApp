@@ -117,9 +117,14 @@ class WeatherDetailViewController: UIViewController {
     }
 
     @IBAction func get5DayForecast(_ sender: UIButton) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.ViewController.kForecastViewController) as? ForcastViewController else { return }
-        vc.weatherDTO = weatherDTO
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        sender.animate(from: 0.95, to: 1)
+        let debouncer = Debouncer(delay: 0.2)
+        debouncer.schedule {
+            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.ViewController.kForecastViewController) as? ForcastViewController else { return }
+            vc.weatherDTO = self.weatherDTO
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
