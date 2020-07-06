@@ -149,7 +149,6 @@ extension MapViewController: MKMapViewDelegate {
         nav.navigationBar.tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
 
-        
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true)
     }

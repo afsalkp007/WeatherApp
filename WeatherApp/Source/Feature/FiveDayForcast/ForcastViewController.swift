@@ -17,6 +17,7 @@ class ForcastViewController: UIViewController {
     private let viewModels = [ForecastViewModel]()
     private let adapter = Adapter<ForecastViewModel, ForecastDayTableViewCell>()
     private let emptyView = EmptyView(text: TitleManager.no_data_found.localized)
+    private let activityIndicator = UIActivityIndicatorView(style: .gray)
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -32,6 +33,12 @@ class ForcastViewController: UIViewController {
         tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView()
         
+        view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
         adapter.configure = { item, cell in
             cell.weatherConditionImageView.image = item.icon
             cell.weekdayLabel.text = item.weekday
@@ -46,13 +53,16 @@ class ForcastViewController: UIViewController {
     
     // MARK: - API
     private func getFiveDayForecaset(_ cityName: String) {
+        activityIndicator.startAnimating()
         weatherService.fetchFiveDayForecast(cityName, completion: { [weak self] result in
             switch result {
             case .success(let lists):
                 let viewModels = lists?.compactMap(ForecastViewModel.init)
                 self?.handle(viewModels ?? [])
+                self?.activityIndicator.stopAnimating()
             case .failure(let error):
                 print("Failed with error: \(error.localizedDescription)")
+                self?.activityIndicator.stopAnimating()
             }
         })
     }

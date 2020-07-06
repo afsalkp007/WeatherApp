@@ -61,6 +61,11 @@ class ListViewController: UIViewController {
             guard let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.Identifier.ViewController.kWeatherDetailViewController) as? WeatherDetailViewController else { return }
             vc.weatherDTO = weatherDTO
             let nav = UINavigationController(rootViewController: vc)
+            nav.navigationBar.isTranslucent = false
+            nav.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0.4797251225, blue: 0.7055471539, alpha: 1)
+            nav.navigationBar.tintColor = .white
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+            
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
         }
