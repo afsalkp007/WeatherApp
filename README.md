@@ -9,4 +9,5 @@ With WeatherApp you can:
 - Get Weather details by clicking on nearby places on map view
 - Detailed weather information is offered in addition to the overviews
 - Search Locations and Add places as bookmarks 
+- Swipe to delete Bookmarks
 - Detailed Five day Weather Forecast 
