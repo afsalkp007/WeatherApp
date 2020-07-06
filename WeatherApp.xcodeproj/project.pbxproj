@@ -21,6 +21,7 @@
 		C256FEA224B0FD0A00F5C98B /* WeatherDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256FEA124B0FD0A00F5C98B /* WeatherDataTests.swift */; };
 		C256FECA24B1064F00F5C98B /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256FEC924B1064F00F5C98B /* WeatherAppUITests.swift */; };
 		C256FED224B1097400F5C98B /* DebouncerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C256FED124B1097400F5C98B /* DebouncerTests.swift */; };
+		C284FE5424B316D100DCDC83 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C284FE5324B316D100DCDC83 /* Array+Ext.swift */; };
 		C29F031824AEF6A200124257 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F031724AEF6A200124257 /* Adapter.swift */; };
 		C29F031F24AEFB1600124257 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F031D24AEFB1600124257 /* ListCell.swift */; };
 		C29F032024AEFB1600124257 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29F031E24AEFB1600124257 /* ListCell.xib */; };
@@ -101,6 +102,7 @@
 		C256FEC924B1064F00F5C98B /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		C256FECB24B1064F00F5C98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C256FED124B1097400F5C98B /* DebouncerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebouncerTests.swift; sourceTree = "<group>"; };
+		C284FE5324B316D100DCDC83 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		C29F031724AEF6A200124257 /* Adapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
 		C29F031D24AEFB1600124257 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		C29F031E24AEFB1600124257 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				C2A36C7524AF77BF005DD8AA /* UIViewController+Ext.swift */,
 				C2A36C9D24AFC25F005DD8AA /* UICollectionView+Ext.swift */,
 				C256FE8124B0EA6000F5C98B /* String+Localized.swift */,
+				C284FE5324B316D100DCDC83 /* Array+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				C29F031824AEF6A200124257 /* Adapter.swift in Sources */,
 				C2B24A6124AEEF11000A367D /* AppDelegate.swift in Sources */,
 				C256FE7224B0710A00F5C98B /* LocationSearchController.swift in Sources */,
+				C284FE5424B316D100DCDC83 /* Array+Ext.swift in Sources */,
 				C2A36C6824AF6965005DD8AA /* Constants+Theme.swift in Sources */,
 				C2A36C9824AFC02A005DD8AA /* NSLayoutConstraint+Extensions.swift in Sources */,
 			);

@@ -30,6 +30,7 @@ class ForcastViewController: UIViewController {
         tableView.dataSource = adapter
         tableView.layer.cornerRadius = 0
         tableView.backgroundColor = UIColor.clear
+        tableView.tableFooterView = UIView()
         
         adapter.configure = { item, cell in
             cell.weatherConditionImageView.image = item.icon
@@ -57,7 +58,8 @@ class ForcastViewController: UIViewController {
     }
     
     private func handle(_ vm: [ForecastViewModel]) {
-        adapter.items = vm
+        let viewModels = vm.filterDuplicate{$1.weekday}
+        adapter.items = viewModels
         tableView.separatorStyle = adapter.items.isEmpty ? .none : .singleLine
         tableView.reloadData()
         
