@@ -23,4 +23,6 @@ class TitleManager: NSObject {
     static let no_data_found = "no_data_found"
     static let pls_add_cities = "pls_add_cities"
     static let book_marks = "book_marks"
+    static let about = "about"
+    
 }
