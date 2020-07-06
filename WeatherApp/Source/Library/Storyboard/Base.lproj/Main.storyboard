@@ -19,6 +19,37 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Help View Controller-->
+        <scene sceneID="8Sz-KK-XI7">
+            <objects>
+                <viewController storyboardIdentifier="HelpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X9M-Xx-URb" customClass="HelpViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oga-Ei-i6w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKU-en-bax">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="591"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YnE-nU-3er" firstAttribute="bottom" secondItem="RKU-en-bax" secondAttribute="bottom" id="24L-dC-WX9"/>
+                            <constraint firstItem="YnE-nU-3er" firstAttribute="trailing" secondItem="RKU-en-bax" secondAttribute="trailing" id="ODb-rz-si8"/>
+                            <constraint firstItem="RKU-en-bax" firstAttribute="leading" secondItem="YnE-nU-3er" secondAttribute="leading" id="dAG-PZ-g5p"/>
+                            <constraint firstItem="RKU-en-bax" firstAttribute="top" secondItem="YnE-nU-3er" secondAttribute="top" id="e3L-Tm-W2i"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YnE-nU-3er"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="S46-Fy-KeH"/>
+                    <connections>
+                        <outlet property="webView" destination="RKU-en-bax" id="iAS-S9-uyI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="92P-wW-jVl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1901.5999999999999" y="-1106.8965517241379"/>
+        </scene>
         <!--List View Controller-->
         <scene sceneID="1rC-yl-VDy">
             <objects>
@@ -42,6 +73,12 @@
                         <viewLayoutGuide key="safeArea" id="VVC-id-zc7"/>
                     </view>
                     <navigationItem key="navigationItem" id="9RN-6V-eJY">
+                        <barButtonItem key="leftBarButtonItem" title="?" id="oAL-6X-4JV">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="VCi-Rx-Jxe" kind="presentation" id="LzB-uH-gzq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JCT-eY-h8G">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -455,7 +492,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJ5-vD-Cub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="-455.62218890554726"/>
+            <point key="canvasLocation" x="2831.1999999999998" y="-455.62218890554726"/>
         </scene>
         <!--List-->
         <scene sceneID="IaW-mQ-eng">
@@ -704,6 +741,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbF-SK-7pZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-610.39999999999998" y="343.17841079460271"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d4v-D2-8RZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VCi-Rx-Jxe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="6Oe-ZU-39t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0" green="0.47058823529999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="X9M-Xx-URb" kind="relationship" relationship="rootViewController" id="SnX-5S-Pmv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qA7-mb-6pa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1183" y="-1107"/>
         </scene>
     </scenes>
     <resources>
