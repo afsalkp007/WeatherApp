@@ -29,8 +29,9 @@ class LocationSearchController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let image = UIImage(named: Constants.Image.name.kVerticalCloseButton)?.withRenderingMode(.alwaysTemplate)
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: Constants.Image.name.kVerticalCloseButton),
+            image: image,
             style: .plain,
             target: self,
             action: #selector(Self.dismissButtonTapped))
@@ -46,7 +47,7 @@ class LocationSearchController: UITableViewController {
         adapter.cellHeight = 44.0
         tableView.delegate = adapter
         tableView.dataSource = adapter
-        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
         
         adapter.configure = { item, cell in
             cell.textLabel?.text = "\(item.title), \(item.subtitle)"
@@ -85,7 +86,6 @@ class LocationSearchController: UITableViewController {
     
     private func handle(_ items: [MKLocalSearchCompletion]?) {
         adapter.items = items ?? []
-        tableView.separatorStyle = adapter.items.isEmpty ? .none : .singleLine
         tableView.reloadData()
     }
     
