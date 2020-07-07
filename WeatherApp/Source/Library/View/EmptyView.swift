@@ -11,10 +11,10 @@ import UIKit
 /// Used to show when there's no data
 final class EmptyView: UIView {
   private lazy var imageView: UIImageView = self.makeImageView()
-  private lazy var titleLabel: UILabel = self.makeLabel()
-    private lazy var subLabel: UILabel = self.makeSubLabel()
+  lazy var titleLabel: UILabel = self.makeLabel()
+    lazy var subLabel: UILabel = self.makeSubLabel()
 
-    required init(text: String, subText: String? = "") {
+    required init(text: String? = "", subText: String? = "") {
     super.init(frame: .zero)
 
     isUserInteractionEnabled = false

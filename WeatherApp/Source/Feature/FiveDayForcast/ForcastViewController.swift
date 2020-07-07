@@ -16,15 +16,15 @@ class ForcastViewController: UIViewController {
     private let weatherService = WeatherDataService(networking: NetworkService())
     private let viewModels = [ForecastViewModel]()
     private let adapter = Adapter<ForecastViewModel, ForecastDayTableViewCell>()
-    private let emptyView = EmptyView(text: TitleManager.no_data_found.localized)
+    private var emptyView = EmptyView()
     private let activityIndicator = UIActivityIndicatorView(style: .gray)
+    private let reachablity = try? Reachability()
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = weatherDTO?.cityName
-        getFiveDayForecaset(weatherDTO?.cityName ?? "")
         
         adapter.cellHeight = 90.0
         tableView.delegate = adapter
@@ -33,11 +33,17 @@ class ForcastViewController: UIViewController {
         tableView.backgroundColor = UIColor.clear
         tableView.tableFooterView = UIView()
         
+        view.addSubview(emptyView)
+        NSLayoutConstraint.pin(view: emptyView, toEdgesOf: view)
+        emptyView.alpha = 0
+        
         view.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
+        
+        getFiveDayForecaset(weatherDTO?.cityName ?? "")
         
         adapter.configure = { item, cell in
             cell.weatherConditionImageView.image = item.icon
@@ -45,39 +51,42 @@ class ForcastViewController: UIViewController {
             cell.weatherConditionLabel.text = item.weatherCondition
             cell.temperatureLabel.text = item.temperature
         }
-        
-        view.addSubview(emptyView)
-        NSLayoutConstraint.pin(view: emptyView, toEdgesOf: view)
-        emptyView.alpha = 0
     }
     
     // MARK: - API
     private func getFiveDayForecaset(_ cityName: String) {
-        activityIndicator.startAnimating()
-        weatherService.fetchFiveDayForecast(cityName, completion: { [weak self] result in
-            switch result {
-            case .success(let lists):
-                let viewModels = lists?.compactMap(ForecastViewModel.init)
-                self?.handle(viewModels ?? [])
-                self?.activityIndicator.stopAnimating()
-            case .failure(let error):
-                print("Failed with error: \(error.localizedDescription)")
-                self?.activityIndicator.stopAnimating()
-            }
-        })
+        if reachablity?.isConnectedToNetwork ?? false {
+            activityIndicator.startAnimating()
+            weatherService.fetchFiveDayForecast(cityName, completion: { [weak self] result in
+                switch result {
+                case .success(let lists):
+                    let viewModels = lists?.compactMap(ForecastViewModel.init)
+                    self?.handle(viewModels ?? [])
+                    self?.activityIndicator.stopAnimating()
+                case .failure(let error):
+                    print("Failed with error: \(error.localizedDescription)")
+                    self?.activityIndicator.stopAnimating()
+                }
+            })
+        } else {
+            setupEmptyView(text: TitleManager.check_network.localized)
+        }
     }
     
     private func handle(_ vm: [ForecastViewModel]) {
         let viewModels = vm.filterDuplicate{$1.weekday}
         adapter.items = viewModels
-        tableView.separatorStyle = adapter.items.isEmpty ? .none : .singleLine
         tableView.reloadData()
         
-        setupEmptyView()
+        setupEmptyView(text: TitleManager.no_data_found.localized)
     }
     
-    private func setupEmptyView() {
+    func setupEmptyView(text: String = "", subText: String = "") {
+        emptyView.titleLabel.text = text
+        emptyView.subLabel.text = subText
+        
         UIView.animate(withDuration: 0.25, animations: {
+            print(self.adapter.items)
             self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
         })
     }

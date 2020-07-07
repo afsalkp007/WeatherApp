@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     private let weatherService = WeatherDataService(networking: NetworkService())
     private var weatherObjects = [WeatherInformationDTO]()
+    private let reachablity = try? Reachability()
     
     // MARK: - Properties
     
@@ -29,13 +30,14 @@ class MapViewController: UIViewController {
         title = TitleManager.tab_weatherMap.localized
         
         configureMapView()
-        getNearbyLocations()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         focusOnAvailableLocation()
+        getNearbyLocations()
     }
     
     deinit {
@@ -46,16 +48,20 @@ class MapViewController: UIViewController {
         guard UserLocationService.shared.locationPermissionsGranted, let location = UserLocationService.shared.currentLocation else {
             return
         }
-        weatherService.fetchNearbyLocations(location.coordinate, completion: { [weak self] result in
-            switch result {
-            case .success(let lists):
-                self?.weatherObjects = lists ?? []
-                let annotations = lists?.compactMap(WeatherLocationMapAnnotation.init)
-                self?.configureMapAnnotations(with: annotations)
-            case .failure(let error):
-                print("Failed with error: \(error.localizedDescription)")
-            }
-        })
+        if reachablity?.isConnectedToNetwork ?? false {
+            weatherService.fetchNearbyLocations(location.coordinate, completion: { [weak self] result in
+                switch result {
+                case .success(let lists):
+                    self?.weatherObjects = lists ?? []
+                    let annotations = lists?.compactMap(WeatherLocationMapAnnotation.init)
+                    self?.configureMapAnnotations(with: annotations)
+                case .failure(let error):
+                    self?.view.displayToast("Failed with error: \(error.localizedDescription)")
+                }
+            })
+        } else {
+            view.displayToast(TitleManager.check_network.localized)
+        }
     }
 }
 

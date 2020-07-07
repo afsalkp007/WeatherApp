@@ -54,4 +54,51 @@ extension UIView {
     }
 }
 
+extension UIView {
+
+    func displayToast(_ message : String) {
+
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate, let window = delegate.window else {
+            return
+        }
+        if let toast = window.subviews.first(where: { $0 is UILabel && $0.tag == -1001 }) {
+            toast.removeFromSuperview()
+        }
+
+        let toastView = UILabel()
+        toastView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        toastView.textColor = UIColor.white
+        toastView.textAlignment = .center
+        toastView.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        toastView.layer.cornerRadius = 10
+        toastView.layer.masksToBounds = true
+        toastView.text = message
+        toastView.numberOfLines = 0
+        toastView.alpha = 0
+        toastView.translatesAutoresizingMaskIntoConstraints = false
+        toastView.tag = -1001
+
+        window.addSubview(toastView)
+
+        NSLayoutConstraint.activate([
+            toastView.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -60),
+            toastView.leadingAnchor.constraint(equalTo: window.leadingAnchor, constant: 15),
+            toastView.trailingAnchor.constraint(equalTo: window.trailingAnchor, constant: -15),
+            toastView.heightAnchor.constraint(equalToConstant: 60)
+        ])
+
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+            toastView.alpha = 1
+        }, completion: nil)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                toastView.alpha = 0
+            }, completion: { finished in
+                toastView.removeFromSuperview()
+            })
+        })
+    }
+}
+
 

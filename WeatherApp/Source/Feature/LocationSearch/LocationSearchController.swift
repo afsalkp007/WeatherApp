@@ -13,14 +13,16 @@ protocol ChangeLocationDelegate {
     func newLocationEntered(name: String)
 }
 
-class LocationSearchController: UITableViewController {
+class LocationSearchController: UIViewController {
     
     // MARK: - variables
+    @IBOutlet weak var tableView: UITableView!
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     var delegate: ChangeLocationDelegate?
     let debouncer = Debouncer(delay: 0.1)
     let adapter = Adapter<MKLocalSearchCompletion, LocationResultCell>()
+    private let reachability = try? Reachability()
     
     // MARK: - outlets
     @IBOutlet weak var locationSearchBar: UISearchBar!

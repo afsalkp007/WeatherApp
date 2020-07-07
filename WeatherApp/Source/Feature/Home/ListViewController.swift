@@ -14,9 +14,10 @@ class ListViewController: UIViewController {
     private let weatherService = WeatherDataService(networking: NetworkService())
     private let adapter = Adapter<WeatherInformationDTO, ListCell>()
     private var refreshControl = UIRefreshControl()
-    private let emptyView = EmptyView(text: TitleManager.no_data_found.localized, subText: TitleManager.pls_add_cities.localized)
+    private var emptyView = EmptyView()
     private var namesArray = [String]()
     let defaults = UserDefaults.standard
+    private let reachablity = try? Reachability()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +27,29 @@ class ListViewController: UIViewController {
         
         let array = defaults.object(forKey: Constants.Keys.UserDefaults.kSavedNameArray) as? [String]
         namesArray = array ?? []
-        namesArray.forEach{ name in
-            loadData(with: name)
-        }
         
         view.addSubview(emptyView)
         NSLayoutConstraint.pin(view: emptyView, toEdgesOf: view)
         emptyView.alpha = 0
         
-        if namesArray.isEmpty {
-            setupEmptyView()
+        checkForData()
+    }
+    
+    private func checkForData() {
+        if reachablity?.isConnectedToNetwork ?? false {
+            if namesArray.count > 0 {
+                namesArray.forEach{ name in
+                    loadData(with: name)
+                }
+            } else {
+                setupEmptyView(text: TitleManager.no_data_found.localized, subText: TitleManager.pls_add_cities.localized)
+                refreshControl.endRefreshing()
+            }
+        } else {
+            adapter.items = []
+            setupEmptyView(text: TitleManager.check_network.localized)
+            tableView.reloadData()
+            refreshControl.endRefreshing()
         }
     }
     
@@ -75,13 +89,12 @@ class ListViewController: UIViewController {
             self.defaults.set(self.namesArray, forKey: Constants.Keys.UserDefaults.kSavedNameArray)
             self.adapter.items.remove(at: indexPath.row)
             self.tableView.reloadData()
-            self.setupEmptyView()
+            self.setupEmptyView(text: TitleManager.no_data_found.localized, subText: TitleManager.pls_add_cities.localized)
         }
     }
     
     @objc private func refreshData() {
-        tableView.reloadData()
-        refreshControl.endRefreshing()
+        checkForData()
     }
     
     private func configure(with weather: WeatherInformationDTO, cell: ListCell) {
@@ -96,17 +109,21 @@ class ListViewController: UIViewController {
     }
     
     private func loadData(with cityName: String) {
-        refreshControl.beginRefreshing()
-        weatherService.fetchBookmarkedLocations(cityName, completion: { [weak self] result in
-            switch result {
-            case .success(let weather):
-                self?.handle(weather)
-                self?.refreshControl.endRefreshing()
-            case .failure(let error):
-                print(error.localizedDescription)
-                self?.refreshControl.endRefreshing()
-            }
-        })
+        if reachablity?.isConnectedToNetwork ?? false {
+            refreshControl.beginRefreshing()
+            weatherService.fetchBookmarkedLocations(cityName, completion: { [weak self] result in
+                switch result {
+                case .success(let weather):
+                    self?.handle(weather)
+                    self?.refreshControl.endRefreshing()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self?.refreshControl.endRefreshing()
+                }
+            })
+        } else {
+            setupEmptyView(text: TitleManager.check_network.localized)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,16 +139,20 @@ class ListViewController: UIViewController {
     
     private func handle(_ weather: WeatherInformationDTO?) {
         guard let weather = weather else {
-            setupEmptyView()
+            setupEmptyView(text: TitleManager.no_data_found.localized, subText: TitleManager.pls_add_cities.localized)
             return
         }
         
         adapter.items.append(weather)
+        adapter.items = adapter.items.filterDuplicate({$1.cityName})
         tableView.reloadData()
-        setupEmptyView()
+        setupEmptyView(text: TitleManager.no_data_found.localized, subText: TitleManager.pls_add_cities.localized)
     }
     
-    func setupEmptyView() {
+    func setupEmptyView(text: String = "", subText: String = "") {
+        emptyView.titleLabel.text = text
+        emptyView.subLabel.text = subText
+        
         UIView.animate(withDuration: 0.25, animations: {
             self.emptyView.alpha = self.adapter.items.isEmpty ? 1 : 0
         })
