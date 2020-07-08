@@ -106,6 +106,12 @@ class ListViewController: UIViewController {
         cell.cloudCoverLabel.text = weather.cloudCoverage?.coverage?.append(contentsOf: "%", delimiter: .none)
         cell.humidityLabel.text = weather.atmosphericInformation?.humidity?.append(contentsOf: "%", delimiter: .none)
         cell.windSpeedLabel.text = "\(weather.windInformation?.windSpeed ?? 0.0) \(TitleManager.kph.localized)"
+        
+        let weatherConditionSymbol = ConversionWorker.weatherConditionSymbol(
+            fromWeatherCode: weather.weatherCondition?[0].identifier,
+          isDayTime: ConversionWorker.isDayTime(for: weather.dayInformation, coordinates: weather.coordinates) ?? true
+        )
+        cell.weatherConditionLabel.text = weatherConditionSymbol
     }
     
     private func loadData(with cityName: String) {
